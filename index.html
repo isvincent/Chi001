@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-theme="system" data-font="md" data-device="auto" data-layout="auto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>孔乙己學習站</title>
+<meta name="description" content="魯迅〈孔乙己〉互動學習網站：學習指引、互動視覺化、延伸學習、練習、測驗與學習歷程。">
+<meta name="theme-color" content="#e5484d">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="孔乙己">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@600;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fff7ea; --bg2:#ffefd6; --surface:#ffffff; --surface2:#fffaf2; --ink:#2b2238; --muted:#6a6177; --line:#eadfcd;
+  --red:#e5484d; --redSoft:#ffe3e1; --jade:#0f9f7c; --jadeSoft:#d6f5ea; --gold:#f2a516; --goldSoft:#fff0cc;
+  --indigo:#4f5bd5; --indigoSoft:#e3e6ff; --sky:#1b9fd6; --skySoft:#dcf2fc; --plum:#b4469a; --plumSoft:#fbe1f3;
+  --wood:#9a6440; --woodSoft:#f3e2d2; --wall:#fbe8c8; --floor:#e8c9a0;
+  --shadow:0 2px 0 rgba(43,34,56,.06),0 10px 30px -12px rgba(43,34,56,.25);
+  --r-lg:22px; --r-md:16px; --r-sm:10px;
+  --serif:"Noto Serif TC","Songti TC","PMingLiU",serif;
+  --sans:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  color-scheme:light;
+}
+html[data-theme="dark"]{ --bg:#16121e; --bg2:#1d1828; --surface:#231d30; --surface2:#2a2339; --ink:#f4eefc; --muted:#b5abc6; --line:#3a3150;
+  --redSoft:#4a2228; --jadeSoft:#163d33; --goldSoft:#463716; --indigoSoft:#262b55; --skySoft:#15394a; --plumSoft:#43203b; --woodSoft:#3d2b20;
+  --wall:#3a2e24; --floor:#4b3a2b; --shadow:0 2px 0 rgba(0,0,0,.2),0 10px 30px -12px rgba(0,0,0,.6); color-scheme:dark;}
+@media (prefers-color-scheme:dark){
+  html[data-theme="system"]{ --bg:#16121e; --bg2:#1d1828; --surface:#231d30; --surface2:#2a2339; --ink:#f4eefc; --muted:#b5abc6; --line:#3a3150;
+  --redSoft:#4a2228; --jadeSoft:#163d33; --goldSoft:#463716; --indigoSoft:#262b55; --skySoft:#15394a; --plumSoft:#43203b; --woodSoft:#3d2b20;
+  --wall:#3a2e24; --floor:#4b3a2b; --shadow:0 2px 0 rgba(0,0,0,.2),0 10px 30px -12px rgba(0,0,0,.6); color-scheme:dark;}
+}
+html{font-size:18px; -webkit-text-size-adjust:100%;}
+html[data-font="sm"]{font-size:16px} html[data-font="lg"]{font-size:21px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.75;min-height:100vh;overflow-x:hidden;
+  background-image:radial-gradient(circle at 10% 0%,var(--goldSoft) 0,transparent 35%),radial-gradient(circle at 100% 30%,var(--skySoft) 0,transparent 30%);background-attachment:fixed;}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer;border:0;background:none}
+:focus-visible{outline:3px solid var(--indigo);outline-offset:2px;border-radius:8px}
+h1,h2,h3,.serif{font-family:var(--serif);line-height:1.35;text-wrap:balance}
+p,li{text-wrap:pretty}
+.app{max-width:1240px;margin:0 auto;min-height:100vh;position:relative;background:transparent}
+html[data-device="phone"] .app{max-width:430px;border-left:2px solid var(--line);border-right:2px solid var(--line);box-shadow:var(--shadow);background:var(--bg)}
+html[data-device="tablet"]{--frame:840px}
+html[data-device="tablet"] .app{max-width:840px;border-left:2px solid var(--line);border-right:2px solid var(--line);box-shadow:var(--shadow);background:var(--bg)}
+
+/* ---------- Topbar ---------- */
+.topbar{position:sticky;top:0;z-index:50;background:color-mix(in oklab,var(--bg) 86%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:2px solid var(--line)}
+.topbar-in{display:flex;align-items:center;gap:.75rem;padding:.6rem 1rem}
+.brand{display:flex;align-items:center;gap:.6rem;min-width:0;flex:1 1 auto}
+.brand>div{min-width:0}
+.seal{width:44px;height:44px;flex:none;border-radius:12px;background:var(--red);color:#fff;display:grid;place-items:center;font-family:var(--serif);font-weight:900;font-size:1.35rem;box-shadow:inset 0 -4px 0 rgba(0,0,0,.18);transform:rotate(-4deg)}
+.brand-t{font-family:var(--serif);font-weight:900;font-size:1.15rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.brand-s{font-size:.78rem;color:var(--muted);white-space:nowrap;line-height:1.2}
+.nav{display:flex;gap:.3rem;margin-left:auto;flex:0 1 auto;min-width:0;overflow-x:auto;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav button{display:flex;align-items:center;gap:.35rem;padding:.5rem .8rem;border-radius:999px;font-weight:700;font-size:.92rem;color:var(--muted);white-space:nowrap;transition:background .2s,color .2s,transform .15s}
+.nav button svg{width:20px;height:20px}
+.nav button:hover{background:var(--surface);color:var(--ink)}
+.nav button[aria-current="page"]{background:var(--ink);color:var(--bg)}
+.nav button:active{transform:scale(.95)}
+.iconbtn{width:46px;height:46px;flex:none;border-radius:14px;display:grid;place-items:center;background:var(--surface);border:2px solid var(--line);font-size:1.3rem;transition:transform .15s,border-color .2s}
+.iconbtn:hover{border-color:var(--ink)} .iconbtn:active{transform:scale(.92)}
+.iconbtn svg{width:22px;height:22px}
+.progress-strip{height:5px;background:var(--line)}
+.progress-strip i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--red),var(--gold),var(--jade),var(--sky),var(--indigo));transition:width .6s cubic-bezier(.2,.8,.2,1)}
+
+/* phone: bottom nav */
+@media (max-width:1100px){.brand-s{display:none}}
+@media (max-width:900px){ .nav{position:fixed;left:0;right:0;bottom:0;margin:0;justify-content:space-around;background:var(--surface);border-top:2px solid var(--line);padding:.35rem .3rem calc(.35rem + env(safe-area-inset-bottom));z-index:60}
+  .nav button{flex-direction:column;gap:.1rem;font-size:.72rem;padding:.35rem .4rem;border-radius:12px;min-width:56px}
+  .nav button[aria-current="page"]{background:var(--redSoft);color:var(--red)}
+  main{padding-bottom:6rem!important} .brand-s{display:none}
+  .topbar{backdrop-filter:none;-webkit-backdrop-filter:none;background:var(--bg)} }
+html[data-device="phone"] .topbar,html[data-device="tablet"] .topbar{backdrop-filter:none;-webkit-backdrop-filter:none;background:var(--bg)}
+html[data-device="phone"] .nav,html[data-device="tablet"] .nav{position:fixed;left:50%;transform:translateX(-50%);width:min(var(--frame,430px),100%);bottom:0;margin:0;justify-content:space-around;background:var(--surface);border-top:2px solid var(--line);padding:.35rem .3rem calc(.35rem + env(safe-area-inset-bottom));z-index:60}
+html[data-device="phone"] .nav button,html[data-device="tablet"] .nav button{flex-direction:column;gap:.1rem;font-size:.72rem;padding:.35rem .4rem;border-radius:12px;min-width:56px}
+html[data-device="phone"] .nav button[aria-current="page"],html[data-device="tablet"] .nav button[aria-current="page"]{background:var(--redSoft);color:var(--red)}
+html[data-device="phone"] main,html[data-device="tablet"] main{padding-bottom:6rem!important}
+html[data-device="phone"] .brand-s{display:none}
+
+main{padding:1.25rem 1rem 3rem}
+.page{display:none;animation:pageIn .45s cubic-bezier(.2,.8,.2,1)}
+.page.active{display:block}
+@keyframes pageIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+/* ---------- Generic ---------- */
+.sec-head{display:flex;align-items:flex-end;gap:1rem;flex-wrap:wrap;margin:2rem 0 1rem}
+.sec-head h2{font-size:clamp(1.5rem,3.4vw,2.1rem)}
+.kicker{display:inline-flex;align-items:center;gap:.4rem;font-weight:900;font-size:.82rem;letter-spacing:.08em;padding:.2rem .7rem;border-radius:999px;background:var(--goldSoft);color:#9a5d00}
+html[data-theme="dark"] .kicker{color:var(--gold)}
+@media (prefers-color-scheme:dark){html[data-theme="system"] .kicker{color:var(--gold)}}
+.lead{color:var(--muted);font-size:1.02rem;max-width:60ch}
+.card{background:var(--surface);border:2px solid var(--line);border-radius:var(--r-lg);padding:1.25rem;box-shadow:var(--shadow)}
+.grid{display:grid;gap:1rem}
+.g2{grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr))}
+html[data-layout="portrait"] .g2,html[data-layout="portrait"] .g3,html[data-layout="portrait"] .g4,html[data-layout="portrait"] .split{grid-template-columns:1fr!important}
+html[data-layout="landscape"] .g2{grid-template-columns:repeat(2,1fr)} html[data-layout="landscape"] .g3{grid-template-columns:repeat(3,1fr)} html[data-layout="landscape"] .g4{grid-template-columns:repeat(4,1fr)}
+html[data-layout="landscape"] .split{grid-template-columns:1.3fr 1fr!important}
+html[data-device="phone"] .split,html[data-device="phone"] .g2,html[data-device="phone"] .g3,html[data-device="phone"] .g4,html[data-device="tablet"] .split{grid-template-columns:1fr!important}
+html[data-device="phone"] .hero h1{font-size:2.1rem} html[data-device="phone"] .hero-art{opacity:.25;width:70%}
+html[data-device="phone"] .sec-head h2{font-size:1.5rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.45rem;min-height:48px;padding:.6rem 1.15rem;border-radius:14px;font-weight:800;background:var(--surface);border:2px solid var(--ink);box-shadow:0 4px 0 var(--ink);transition:transform .12s,box-shadow .12s,background .2s}
+.btn:hover{transform:translateY(-1px)} .btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--ink)}
+.btn.primary{background:var(--red);color:#fff;border-color:#a8262b;box-shadow:0 4px 0 #a8262b}
+.btn.jade{background:var(--jade);color:#fff;border-color:#08694f;box-shadow:0 4px 0 #08694f}
+.btn.indigo{background:var(--indigo);color:#fff;border-color:#2f3a9e;box-shadow:0 4px 0 #2f3a9e}
+.btn.gold{background:var(--gold);color:#3b2600;border-color:#a86c00;box-shadow:0 4px 0 #a86c00}
+.btn.ghost{border-color:var(--line);box-shadow:0 4px 0 var(--line)}
+.btn:disabled{opacity:.45;pointer-events:none}
+.btn svg{width:20px;height:20px}
+.row{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center}
+.chip{display:inline-flex;align-items:center;gap:.3rem;padding:.15rem .65rem;border-radius:999px;font-size:.85rem;font-weight:700;background:var(--bg2);border:1.5px solid var(--line)}
+.muted{color:var(--muted)}
+.quote{font-family:var(--serif);font-size:1.12rem;border-left:0;padding:.8rem 1rem;border-radius:var(--r-md);background:var(--surface2);position:relative}
+.quote::before{content:"「";position:absolute;left:.3rem;top:-.4rem;font-size:2.2rem;color:var(--red);opacity:.35}
+.tag-red{background:var(--redSoft);color:var(--red);border-color:transparent}
+.tag-jade{background:var(--jadeSoft);color:var(--jade);border-color:transparent}
+.tag-gold{background:var(--goldSoft);color:#9a5d00;border-color:transparent}
+.tag-indigo{background:var(--indigoSoft);color:var(--indigo);border-color:transparent}
+.tag-sky{background:var(--skySoft);color:var(--sky);border-color:transparent}
+.tag-plum{background:var(--plumSoft);color:var(--plum);border-color:transparent}
+.meter{height:14px;border-radius:999px;background:var(--bg2);overflow:hidden;border:1.5px solid var(--line)}
+.meter i{display:block;height:100%;border-radius:999px;transition:width .7s cubic-bezier(.2,.8,.2,1)}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;border-radius:28px;overflow:hidden;padding:clamp(1.4rem,4vw,3rem);background:linear-gradient(135deg,#ff6b5c 0%,#f2a516 55%,#ffd36e 100%);color:#2b1606;box-shadow:var(--shadow);isolation:isolate}
+.hero h1{font-size:clamp(2rem,6vw,3.8rem);font-weight:900;letter-spacing:.02em}
+.hero h1 em{font-style:normal;background:#fff;color:var(--red);padding:0 .25em;border-radius:12px;box-shadow:0 4px 0 #b9332f}
+.hero p{max-width:52ch;font-size:1.05rem;margin-top:.8rem;font-weight:500}
+.hero .row{margin-top:1.2rem}
+.hero .btn{border-color:#2b1606;box-shadow:0 4px 0 #2b1606}
+.hero-art{position:absolute;right:-10px;bottom:-12px;width:min(46%,420px);z-index:-1;opacity:.95}
+.bean{position:absolute;width:16px;height:12px;border-radius:50%;background:#7a5a2a;box-shadow:inset -2px -2px 0 rgba(0,0,0,.25);animation:floaty 6s ease-in-out infinite;z-index:-1}
+@keyframes floaty{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-14px) rotate(25deg)}}
+.steam path{animation:steam 3s ease-in-out infinite;transform-origin:center}
+.steam path:nth-child(2){animation-delay:.6s}.steam path:nth-child(3){animation-delay:1.2s}
+@keyframes steam{0%{opacity:0;transform:translateY(10px)}40%{opacity:.8}100%{opacity:0;transform:translateY(-22px)}}
+@media (max-width:640px){.hero-art{opacity:.25;width:70%}}
+
+/* ---------- Guide ---------- */
+.goal{display:flex;gap:.8rem;align-items:flex-start}
+.goal .num{flex:none;width:44px;height:44px;border-radius:14px;display:grid;place-items:center;font-weight:900;font-size:1.2rem;color:#fff}
+.path{display:grid;gap:.8rem;counter-reset:st}
+.step{display:grid;grid-template-columns:auto 1fr auto;gap:.9rem;align-items:center;padding:.9rem 1rem;border-radius:var(--r-md);background:var(--surface);border:2px solid var(--line);transition:border-color .2s,transform .2s}
+.step:hover{border-color:var(--ink);transform:translateX(4px)}
+.step .dot{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-weight:900;background:var(--bg2);border:2px solid var(--line)}
+.step.done .dot{background:var(--jade);color:#fff;border-color:var(--jade)}
+.step h4{font-size:1.05rem}
+.step small{color:var(--muted);display:block;line-height:1.5}
+.author{display:grid;grid-template-columns:auto 1fr;gap:1rem;align-items:center}
+.portrait-ph{width:96px;height:120px;border-radius:16px;background:repeating-linear-gradient(45deg,var(--bg2),var(--bg2) 8px,var(--surface2) 8px,var(--surface2) 16px);border:2px dashed var(--line);display:grid;place-items:center;text-align:center;font-family:var(--serif);font-weight:900;font-size:1.6rem;color:var(--wood)}
+.facts{display:grid;grid-template-columns:auto 1fr;gap:.25rem .8rem;font-size:.95rem}
+.facts dt{font-weight:800;color:var(--muted)}
+
+/* ---------- Explore ---------- */
+.tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem}
+.tabs button{padding:.55rem 1rem;border-radius:14px;font-weight:800;border:2px solid var(--line);background:var(--surface);display:flex;gap:.4rem;align-items:center;transition:all .2s}
+.tabs button .ck{display:none;color:var(--jade)}
+.tabs button.seen .ck{display:inline}
+.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.viz{display:none} .viz.active{display:block;animation:pageIn .4s}
+.split{display:grid;grid-template-columns:1.35fr 1fr;gap:1rem}
+@media (max-width:860px){.split{grid-template-columns:1fr}}
+.stage-svg{width:100%;height:auto;display:block;border-radius:var(--r-lg);border:3px solid var(--ink);background:var(--wall)}
+.hot{cursor:pointer;transition:transform .2s}
+.hot:hover,.hot.on{transform:translateY(-4px)}
+.hot circle.ring{opacity:0}
+.hot.on circle.ring{opacity:1;animation:pulse 1.4s ease-out infinite}
+@keyframes pulse{from{r:30;opacity:.8}to{r:46;opacity:0}}
+.info{min-height:260px}
+.info h3{font-size:1.4rem;display:flex;gap:.5rem;align-items:center}
+.tok{display:inline-grid;place-items:center;width:42px;height:42px;border-radius:50%;color:#fff;font-family:var(--serif);font-weight:900;font-size:1.15rem;flex:none}
+.toggle{display:inline-flex;align-items:center;gap:.5rem;font-weight:700;cursor:pointer;user-select:none}
+.toggle input{appearance:none;width:50px;height:28px;border-radius:999px;background:var(--line);position:relative;transition:background .2s;cursor:pointer}
+.toggle input::after{content:"";position:absolute;width:22px;height:22px;border-radius:50%;background:#fff;top:3px;left:3px;transition:left .2s;box-shadow:0 1px 3px rgba(0,0,0,.3)}
+.toggle input:checked{background:var(--jade)} .toggle input:checked::after{left:25px}
+
+input[type=range]{width:100%;accent-color:var(--red);height:36px}
+.tl-steps{display:flex;justify-content:space-between;gap:.3rem;margin-top:.2rem}
+.tl-steps button{flex:1;padding:.4rem .2rem;border-radius:12px;font-size:.82rem;font-weight:800;color:var(--muted);border:2px solid transparent;line-height:1.3}
+.tl-steps button.on{color:var(--red);border-color:var(--red);background:var(--redSoft)}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:.45rem .9rem;align-items:start}
+.kv b{color:var(--muted);font-size:.9rem;white-space:nowrap;padding-top:.1rem}
+
+.laughs{display:grid;gap:.6rem}
+.laugh{display:grid;grid-template-columns:auto 1fr;gap:.8rem;align-items:center;padding:.8rem 1rem;border-radius:var(--r-md);border:2px solid var(--line);background:var(--surface);text-align:left;transition:all .2s}
+.laugh:hover{border-color:var(--gold)}
+.laugh.on{border-color:var(--red);background:var(--redSoft)}
+.laugh .n{width:36px;height:36px;border-radius:12px;display:grid;place-items:center;font-weight:900;background:var(--goldSoft);color:#9a5d00}
+.who{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.3rem}
+.who span{font-size:.8rem;padding:.05rem .5rem;border-radius:999px;background:var(--bg2);opacity:.35}
+.who span.y{opacity:1;background:var(--gold);color:#3b2600;font-weight:800}
+.wave{display:flex;gap:4px;align-items:flex-end;height:90px;margin:.6rem 0}
+.wave i{flex:1;border-radius:6px 6px 2px 2px;background:linear-gradient(var(--red),var(--gold));transition:height .4s}
+.wave.go i{animation:bounce .5s ease-in-out infinite alternate}
+@keyframes bounce{to{transform:scaleY(.4)}}
+.wave i{transform-origin:bottom}
+
+.spectrum{user-select:none;-webkit-user-select:none;position:relative;height:150px;border-radius:var(--r-lg);background:linear-gradient(90deg,#3a1f2a,var(--red) 25%,var(--gold) 55%,var(--jade) 100%);margin:1.2rem 0 .4rem;border:3px solid var(--ink);touch-action:none}
+.spectrum .lbl{position:absolute;bottom:-1.9rem;font-size:.85rem;font-weight:800;color:var(--muted)}
+.marker{user-select:none;-webkit-user-select:none;position:absolute;top:50%;width:54px;height:54px;margin:-27px 0 0 -27px;border-radius:50%;display:grid;place-items:center;color:#fff;font-family:var(--serif);font-weight:900;font-size:1.05rem;border:3px solid #fff;box-shadow:0 4px 10px rgba(0,0,0,.35);cursor:grab;touch-action:none;transition:box-shadow .2s;z-index:2}
+.marker.drag{cursor:grabbing;box-shadow:0 10px 24px rgba(0,0,0,.45);z-index:5}
+.marker.ref{opacity:.95;width:20px;height:20px;margin:-10px 0 0 -10px;border-width:2px;font-size:0;cursor:default;top:-16px!important;pointer-events:none}
+.tray{display:flex;gap:.6rem;flex-wrap:wrap;min-height:64px;padding:.6rem;border:2px dashed var(--line);border-radius:var(--r-md);margin-top:2.6rem}
+.tray .marker{position:relative;top:auto;margin:0}
+
+.flips{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:1rem}
+.flip{perspective:1000px;min-height:210px;cursor:pointer}
+.flip-in{position:relative;width:100%;height:100%;min-height:210px;transition:transform .6s cubic-bezier(.2,.8,.2,1);transform-style:preserve-3d}
+.flip.on .flip-in{transform:rotateY(180deg)}
+.flip-f,.flip-b{position:absolute;inset:0;border-radius:var(--r-lg);padding:1.1rem;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;flex-direction:column;justify-content:center;border:3px solid var(--ink)}
+.flip-f{background:var(--surface);font-family:var(--serif);font-size:1.2rem;font-weight:900;text-align:center;align-items:center}
+.flip-f small{font-family:var(--sans);font-weight:700;font-size:.8rem;color:var(--muted);margin-top:.6rem}
+.flip-b{transform:rotateY(180deg);background:var(--indigo);color:#fff;font-size:.95rem}
+.flip-b b{display:block;font-size:1.02rem;margin-bottom:.3rem;color:#ffe08a}
+.lens{display:flex;gap:.5rem;flex-wrap:wrap}
+.lens button{flex:1;min-width:140px;padding:.8rem;border-radius:var(--r-md);border:2px solid var(--line);background:var(--surface);font-weight:800;text-align:left;transition:all .2s;line-height:1.4}
+.lens button small{display:block;font-weight:500;color:var(--muted);font-size:.8rem}
+.lens button.on{border-color:var(--ink);background:var(--ink);color:var(--bg)}
+.lens button.on small{color:inherit;opacity:.75}
+.lens-view{margin-top:1rem;border-radius:var(--r-lg);padding:1.4rem;min-height:200px;transition:background .4s;border:3px solid var(--ink)}
+.scene-line{font-family:var(--serif);font-size:1.12rem;line-height:2;animation:pageIn .5s}
+.trace-wrap{position:relative;width:min(100%,300px);aspect-ratio:1;border-radius:var(--r-lg);border:3px solid var(--ink);background:var(--surface2);overflow:hidden;touch-action:none}
+.trace-wrap .ghost{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--serif);font-size:min(60vw,210px);color:var(--line);pointer-events:none;line-height:1}
+.trace-wrap canvas{position:absolute;inset:0;width:100%;height:100%}
+.trace-wrap::before,.trace-wrap::after{content:"";position:absolute;background:var(--line);opacity:.6}
+.trace-wrap::before{left:50%;top:0;bottom:0;width:1px}.trace-wrap::after{top:50%;left:0;right:0;height:1px}
+.hui-pick{display:flex;gap:.5rem}
+.hui-pick button{width:56px;height:56px;border-radius:14px;border:2px solid var(--line);font-family:var(--serif);font-size:1.6rem;font-weight:900;background:var(--surface)}
+.hui-pick button.on{border-color:var(--red);background:var(--redSoft);color:var(--red)}
+
+/* ---------- Extend ---------- */
+.ladder{display:grid;gap:.6rem}
+.rung{display:grid;grid-template-columns:auto 1fr auto;gap:.8rem;align-items:center;padding:.8rem 1rem;border-radius:var(--r-md);border:2px solid var(--line);background:var(--surface);text-align:left;transition:all .2s;position:relative}
+.rung:hover{transform:translateX(4px)}
+.rung.on{border-color:var(--indigo);background:var(--indigoSoft)}
+.rung .lv{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;font-weight:900;color:#fff;font-family:var(--serif)}
+.rung .who-here{font-size:.8rem;font-weight:800;padding:.1rem .55rem;border-radius:999px;background:var(--red);color:#fff}
+.ext-card{display:flex;flex-direction:column;gap:.5rem}
+.ext-card .top{display:flex;gap:.6rem;align-items:center}
+.ext-ico{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;font-size:1.5rem;flex:none}
+details.acc{border:2px solid var(--line);border-radius:var(--r-md);background:var(--surface);padding:.2rem 1rem;transition:border-color .2s}
+details.acc[open]{border-color:var(--ink)}
+details.acc summary{cursor:pointer;font-weight:800;padding:.7rem 0;list-style:none;display:flex;justify-content:space-between;gap:1rem}
+details.acc summary::after{content:"＋";font-weight:900;color:var(--red)}
+details.acc[open] summary::after{content:"－"}
+details.acc>div{padding:0 0 1rem}
+
+/* ---------- Practice / Quiz ---------- */
+.modes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:.8rem;margin-bottom:1.2rem}
+.mode{padding:1rem;border-radius:var(--r-lg);border:3px solid var(--line);background:var(--surface);text-align:left;transition:all .2s;display:flex;flex-direction:column;gap:.3rem}
+.mode:hover{transform:translateY(-3px);border-color:var(--ink)}
+.mode.on{border-color:var(--ink);box-shadow:0 5px 0 var(--ink)}
+.mode .ext-ico{margin-bottom:.2rem}
+.mode b{font-size:1.08rem}
+.mode small{color:var(--muted);line-height:1.45}
+.arena{min-height:340px}
+.sortlist{display:grid;gap:.55rem;margin:1rem 0}
+.sortitem{display:grid;grid-template-columns:auto 1fr auto;gap:.7rem;align-items:center;padding:.75rem .9rem;border-radius:var(--r-md);border:2px solid var(--line);background:var(--surface2);transition:all .25s}
+.sortitem .idx{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-weight:900;background:var(--ink);color:var(--bg)}
+.sortitem .mv{display:flex;gap:.3rem}
+.sortitem .mv button{width:42px;height:42px;border-radius:12px;border:2px solid var(--line);background:var(--surface);font-weight:900;font-size:1.1rem}
+.sortitem.ok{border-color:var(--jade);background:var(--jadeSoft)}
+.sortitem.bad{border-color:var(--red);background:var(--redSoft)}
+.qbox{font-family:var(--serif);font-size:clamp(1.15rem,2.6vw,1.45rem);font-weight:900;line-height:1.7;margin:.6rem 0 1rem}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:.7rem}
+.opt{min-height:58px;padding:.75rem 1rem;border-radius:var(--r-md);border:2px solid var(--line);background:var(--surface);font-weight:700;text-align:left;display:flex;gap:.6rem;align-items:center;transition:all .18s}
+.opt:hover{border-color:var(--ink);transform:translateY(-2px)}
+.opt .k{flex:none;width:32px;height:32px;border-radius:10px;display:grid;place-items:center;background:var(--bg2);font-weight:900}
+.opt.ok{border-color:var(--jade);background:var(--jadeSoft)} .opt.ok .k{background:var(--jade);color:#fff}
+.opt.bad{border-color:var(--red);background:var(--redSoft);animation:shake .4s} .opt.bad .k{background:var(--red);color:#fff}
+.opt:disabled{cursor:default;transform:none}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.fb{margin-top:1rem;padding:.9rem 1rem;border-radius:var(--r-md);font-weight:600;animation:pageIn .3s}
+.fb.ok{background:var(--jadeSoft);color:var(--jade)} .fb.bad{background:var(--redSoft);color:var(--red)}
+.fb p{color:var(--ink);font-weight:500;margin-top:.2rem}
+.qtop{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+.dots{display:flex;gap:5px;flex-wrap:wrap}
+.dots i{width:12px;height:12px;border-radius:50%;background:var(--line)}
+.dots i.cur{background:var(--ink);transform:scale(1.25)} .dots i.ok{background:var(--jade)} .dots i.bad{background:var(--red)}
+.fc{perspective:1200px;width:min(100%,520px);margin:1rem auto;height:260px;cursor:pointer}
+.fc .flip-in{min-height:260px}
+.fc .flip-f{font-size:2rem}
+.result{text-align:center;padding:1rem 0}
+.big-score{font-family:var(--serif);font-size:clamp(3rem,10vw,5rem);font-weight:900;line-height:1;background:linear-gradient(135deg,var(--red),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+.review{display:grid;gap:.6rem;text-align:left;margin-top:1rem}
+.review .it{padding:.8rem 1rem;border-radius:var(--r-md);border:2px solid var(--line);background:var(--surface2)}
+.review .it.bad{border-color:var(--red)} .review .it.ok{border-color:var(--jade)}
+.badge{display:inline-grid;place-items:center;width:120px;height:120px;border-radius:50%;margin:0 auto .6rem;font-size:3rem;background:conic-gradient(var(--red),var(--gold),var(--jade),var(--sky),var(--indigo),var(--red));animation:spin 8s linear infinite;position:relative}
+.badge span{position:absolute;inset:8px;border-radius:50%;background:var(--surface);display:grid;place-items:center;animation:spin 8s linear infinite reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ---------- Portfolio ---------- */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:.8rem}
+.stat{padding:1rem;border-radius:var(--r-lg);color:#fff;position:relative;overflow:hidden}
+.stat b{display:block;font-family:var(--serif);font-size:2rem;line-height:1.1}
+.stat span{font-weight:700;font-size:.88rem;opacity:.95}
+.stat::after{content:"";position:absolute;right:-20px;top:-20px;width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,.18)}
+.log{display:grid;gap:.5rem;max-height:460px;overflow:auto;padding-right:.3rem}
+.log .it{display:grid;grid-template-columns:auto 1fr auto;gap:.7rem;align-items:center;padding:.6rem .8rem;border-radius:var(--r-md);background:var(--surface2);border:1.5px solid var(--line)}
+.log .ic{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;font-size:1.05rem}
+.log time{font-size:.78rem;color:var(--muted);white-space:nowrap}
+.field{display:grid;gap:.3rem}
+.field label{font-weight:800;font-size:.92rem}
+.field input,.field textarea{width:100%;padding:.7rem .9rem;border-radius:12px;border:2px solid var(--line);background:var(--surface2);min-height:48px;resize:vertical;line-height:1.6}
+.field input:focus,.field textarea:focus{border-color:var(--indigo);outline:none}
+.bars{display:flex;gap:6px;align-items:flex-end;height:140px;padding-top:.5rem}
+.bars div{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:4px;height:100%;font-size:.75rem;color:var(--muted)}
+.bars i{width:100%;max-width:38px;border-radius:8px 8px 3px 3px;background:linear-gradient(var(--indigo),var(--sky));transition:height .6s}
+
+/* ---------- Settings modal ---------- */
+.modal-bg{position:fixed;inset:0;background:rgba(20,14,30,.5);backdrop-filter:blur(3px);z-index:100;display:none;align-items:flex-end;justify-content:center}
+.modal-bg.open{display:flex;animation:fade .25s}
+@keyframes fade{from{opacity:0}}
+.modal{width:min(560px,100%);max-height:92vh;overflow:auto;background:var(--surface);border-radius:26px 26px 0 0;padding:1.3rem 1.2rem calc(1.3rem + env(safe-area-inset-bottom));border:3px solid var(--ink);border-bottom:0;animation:slideUp .35s cubic-bezier(.2,.8,.2,1)}
+@media (min-width:700px){.modal-bg{align-items:center}.modal{border-radius:26px;border-bottom:3px solid var(--ink)}}
+@keyframes slideUp{from{transform:translateY(40px);opacity:0}}
+.modal h3{font-size:1.35rem;display:flex;justify-content:space-between;align-items:center;margin-bottom:.8rem}
+.set-row{display:grid;gap:.3rem;padding:.5rem 0;border-bottom:1.5px dashed var(--line)}
+.set-row:last-of-type{border-bottom:0}
+.set-row .lab{font-weight:800;display:flex;align-items:center;gap:.45rem}
+.seg{display:flex;background:var(--bg2);padding:4px;border-radius:14px;gap:4px;flex-wrap:wrap}
+.seg button{flex:1;min-height:42px;padding:.35rem .5rem;border-radius:10px;font-weight:700;font-size:.9rem;color:var(--muted);transition:all .18s;white-space:nowrap}
+.seg button.on{background:var(--surface);color:var(--ink);box-shadow:0 2px 6px rgba(0,0,0,.12);outline:2px solid var(--ink)}
+.toast{position:fixed;left:50%;bottom:6.5rem;transform:translateX(-50%) translateY(20px);background:var(--ink);color:var(--bg);padding:.7rem 1.2rem;border-radius:14px;font-weight:700;opacity:0;pointer-events:none;transition:all .3s;z-index:200;max-width:90vw;text-align:center}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.confetti{position:fixed;top:-20px;width:10px;height:14px;z-index:300;pointer-events:none;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+.footer{text-align:center;color:var(--muted);font-size:.85rem;padding:2rem 1rem 1rem}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<div class="app" id="app">
+  <header class="topbar">
+    <div class="topbar-in">
+      <div class="brand">
+        <div class="seal" aria-hidden="true">孔</div>
+        <div><div class="brand-t" data-i="appName">孔乙己學習站</div><div class="brand-s" data-i="appSub">魯迅〈孔乙己〉互動學習</div></div>
+      </div>
+      <nav class="nav" id="nav" aria-label="主選單"></nav>
+      <button class="iconbtn" id="soundQuick" aria-label="音效"></button>
+      <button class="iconbtn" id="openSettings" aria-label="顯示與操作設定" title="顯示與操作設定">⚙️</button>
+    </div>
+    <div class="progress-strip" aria-hidden="true"><i id="progBar"></i></div>
+  </header>
+
+  <main id="main">
+    <section class="page" id="page-guide"></section>
+    <section class="page" id="page-explore"></section>
+    <section class="page" id="page-extend"></section>
+    <section class="page" id="page-practice"></section>
+    <section class="page" id="page-quiz"></section>
+    <section class="page" id="page-portfolio"></section>
+  </main>
+  <footer class="footer" id="footer"></footer>
+</div>
+
+<div class="modal-bg" id="settingsBg" role="dialog" aria-modal="true" aria-labelledby="setTitle">
+  <div class="modal" id="settingsModal"></div>
+</div>
+<div class="modal-bg" id="confirmBg" role="dialog" aria-modal="true">
+  <div class="modal" id="confirmModal"></div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+'use strict';
+/* =========================================================
+   Storage helpers (safe)
+   ========================================================= */
+const store={get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+const SKEY='kyj-settings-v1', PKEY='kyj-portfolio-v1';
+const S=Object.assign({sound:true,device:'auto',layout:'auto',lang:'zh',font:'md',theme:'system'},store.get(SKEY,{}));
+const P=Object.assign({profile:{name:'',cls:'',seat:''},log:[],explored:[],steps:[],quizzes:[],practice:[],notes:{q1:'',q2:'',q3:'',free:''}},store.get(PKEY,{}));
+const saveS=()=>store.set(SKEY,S), saveP=()=>store.set(PKEY,P);
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
+const L=o=>o==null?'':(typeof o==='string'?o:(o[S.lang]??o.zh));
+
+/* =========================================================
+   Sound (Web Audio, synthesized)
+   ========================================================= */
+let AC=null;
+function ac(){if(!AC){try{AC=new (window.AudioContext||window.webkitAudioContext)()}catch(e){}}if(AC&&AC.state==='suspended')AC.resume();return AC}
+function tone(f,d=.12,type='sine',v=.18,delay=0,slide=0){if(!S.sound)return;const c=ac();if(!c)return;const t=c.currentTime+delay;const o=c.createOscillator(),g=c.createGain();o.type=type;o.frequency.setValueAtTime(f,t);if(slide)o.frequency.exponentialRampToValueAtTime(Math.max(40,f+slide),t+d);g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(v,t+.01);g.gain.exponentialRampToValueAtTime(.0001,t+d);o.connect(g).connect(c.destination);o.start(t);o.stop(t+d+.02)}
+const SFX={
+  click(){tone(660,.06,'triangle',.12)},
+  tab(){tone(520,.07,'sine',.12);tone(780,.08,'sine',.1,.05)},
+  ok(){[523,659,784].forEach((f,i)=>tone(f,.16,'triangle',.16,i*.07))},
+  bad(){tone(220,.22,'sawtooth',.1,0,-80)},
+  flip(){tone(900,.05,'square',.05);tone(1200,.05,'square',.04,.04)},
+  win(){[523,659,784,1047,784,1047].forEach((f,i)=>tone(f,.2,'triangle',.15,i*.1))},
+  laugh(){for(let i=0;i<6;i++)tone(380+Math.random()*120,.09,'square',.06,i*.11,60)},
+  bowl(){tone(1400,.3,'sine',.1);tone(1870,.25,'sine',.06,.02)},
+  pop(){tone(300,.08,'sine',.15,0,400)}
+};
+
+/* =========================================================
+   i18n UI strings
+   ========================================================= */
+const T={
+zh:{appName:'孔乙己學習站',appSub:'魯迅〈孔乙己〉互動學習',
+ nav:{guide:'學習指引',explore:'互動探索',extend:'延伸學習',practice:'練習區',quiz:'測驗',portfolio:'學習歷程'},
+ heroK:'國語文・現代小說選讀',heroA:'孔乙己是',heroB:'站著喝酒而穿長衫',heroC:'的唯一的人',
+ heroP:'一個考不上秀才的讀書人，在魯鎮咸亨酒店裡成為眾人的笑料。跟著這個網站，一步步讀懂人物、手法與那陣「快活的空氣」背後的冷漠。',
+ start:'開始學習',toExplore:'進入互動探索',goals:'單元學習目標',path:'學習路徑',pathTip:'完成一步就勾選，進度會記入學習歷程。',
+ author:'作者與作品',bg:'時代背景',before:'閱讀前想一想',keywords:'本課關鍵詞',minutes:'分鐘',go:'前往',
+ exploreK:'六個互動視覺化',exploreT:'走進咸亨酒店',exploreP:'點一點、拖一拖、切換看看——每個元件都對應課文中的一個重點。',
+ extendK:'進階與延伸',extendT:'從一個人，看見一個時代',extendP:'科舉制度、魯迅筆下的看客、對讀篇章與現代回響，延伸你的思考。',
+ practiceK:'反覆演練',practiceT:'練習區',practiceP:'四種練習模式，每次題目順序都會重新洗牌，練到熟為止。',
+ quizK:'驗收理解',quizT:'單元測驗',quizP:'從題庫隨機抽出 10 題，作答後立即看到解析，成績自動存入學習歷程。',
+ pfK:'記錄與下載',pfT:'我的學習歷程',pfP:'系統自動記錄你的學習足跡，也可以寫下反思，並下載成檔案交給老師。',
+ again:'再練一次',next:'下一題',check:'檢查答案',finish:'完成',restart:'重新開始',startQuiz:'開始測驗',
+ correct:'答對了！',wrong:'再想想',answerIs:'正確答案：',score:'分數',
+ settings:'顯示與操作設定',sFs:'全螢幕',sSound:'音效',sDevice:'裝置',sLayout:'版面',sLang:'語言',sFont:'字體',sTheme:'色系',
+ on:'開啟',off:'關閉',auto:'自動',phone:'手機',tablet:'平板',desktop:'電腦',portrait:'直式',landscape:'橫式',fSm:'縮小',fMd:'標準',fLg:'放大',system:'跟隨系統',light:'亮色',dark:'暗色',close:'完成',
+ resetAll:'恢復預設',fsNo:'此瀏覽器不支援全螢幕',saved:'已儲存',
+ footer:'引文出自魯迅〈孔乙己〉(1919)・本網站供課堂教學使用'},
+en:{appName:'Kong Yiji Study Hub',appSub:'Interactive study of Lu Xun\'s "Kong Yiji"',
+ nav:{guide:'Guide',explore:'Explore',extend:'Extend',practice:'Practice',quiz:'Quiz',portfolio:'Portfolio'},
+ heroK:'Chinese Literature · Modern Fiction',heroA:'Kong Yiji was',heroB:'the only one who drank standing up in a long gown',heroC:'',
+ heroP:'A scholar who never passed even the lowest exam becomes the laughing-stock of the Xianheng Tavern. Work through this site to understand the characters, the craft, and the coldness behind the "happy atmosphere".',
+ start:'Start learning',toExplore:'Go explore',goals:'Learning goals',path:'Learning path',pathTip:'Tick each step when done — progress is saved to your portfolio.',
+ author:'Author & work',bg:'Historical background',before:'Before you read',keywords:'Key terms',minutes:'min',go:'Go',
+ exploreK:'Six interactive visuals',exploreT:'Step into the Xianheng Tavern',exploreP:'Tap, drag and switch — each component maps to a key point of the text.',
+ extendK:'Advanced & extension',extendT:'One man, one era',extendP:'The exam system, Lu Xun\'s onlookers, paired readings and modern echoes.',
+ practiceK:'Drill',practiceT:'Practice',practiceP:'Four practice modes, reshuffled every time. Practise until it sticks.',
+ quizK:'Check understanding',quizT:'Unit quiz',quizP:'10 random questions from the bank, with instant explanations. Scores are saved automatically.',
+ pfK:'Record & download',pfT:'My learning portfolio',pfP:'Your learning trail is recorded automatically. Add reflections and download a file for your teacher.',
+ again:'Practise again',next:'Next',check:'Check',finish:'Finish',restart:'Restart',startQuiz:'Start quiz',
+ correct:'Correct!',wrong:'Not quite',answerIs:'Answer: ',score:'Score',
+ settings:'Display & controls',sFs:'Full screen',sSound:'Sound',sDevice:'Device',sLayout:'Layout',sLang:'Language',sFont:'Font size',sTheme:'Theme',
+ on:'On',off:'Off',auto:'Auto',phone:'Phone',tablet:'Tablet',desktop:'Desktop',portrait:'Portrait',landscape:'Landscape',fSm:'Small',fMd:'Standard',fLg:'Large',system:'System',light:'Light',dark:'Dark',close:'Done',
+ resetAll:'Reset',fsNo:'Full screen is not supported here',saved:'Saved',
+ footer:'Quotations from Lu Xun, "Kong Yiji" (1919) · For classroom use'}};
+const t=k=>{const v=k.split('.').reduce((o,p)=>o&&o[p],T[S.lang]);return v??k};
+
+/* =========================================================
+   Icons (inline SVG)
+   ========================================================= */
+const I={
+guide:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M8 7h7M8 11h5"/></svg>',
+explore:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/></svg>',
+extend:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="4"/></svg>',
+practice:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>',
+quiz:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="m8 12 2.5 2.5L16 9"/></svg>',
+portfolio:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/></svg>',
+soundOn:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg>',
+soundOff:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="m23 9-6 6M17 9l6 6"/></svg>',
+down:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0-4-4m4 4 4-4M4 21h16"/></svg>',
+arrow:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
+redo:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>'
+};
+const PAGES=['guide','explore','extend','practice','quiz','portfolio'];
+
+/* =========================================================
+   CONTENT DATA
+   ========================================================= */
+const ROLE={
+ kong:{zh:'孔乙己',en:'Kong Yiji',ch:'孔',c:'#6f7f94'},
+ zhang:{zh:'掌櫃',en:'Shopkeeper',ch:'掌',c:'#c2373e'},
+ ke:{zh:'短衣幫酒客',en:'Short-coat drinkers',ch:'客',c:'#4f5bd5'},
+ wo:{zh:'「我」小夥計',en:'"I" the boy',ch:'我',c:'#0f9f7c'},
+ kids:{zh:'鄰舍孩子',en:'Neighbour kids',ch:'童',c:'#f2a516'},
+ ding:{zh:'丁舉人',en:'Juren Ding',ch:'丁',c:'#3a1f2a'},
+ gown:{zh:'長衫主顧',en:'Long-gown patrons',ch:'衫',c:'#b4469a'}
+};
+
+const GOALS=[
+ {c:'var(--red)',zh:['讀懂情節與人物','掌握孔乙己四次出場的變化，說出主要人物的特點。'],en:['Plot & characters','Trace Kong Yiji\'s four appearances and describe each main character.']},
+ {c:'var(--gold)',zh:['分析寫作手法','辨識對比、反襯、白描與「笑」貫穿全文的結構作用。'],en:['Literary craft','Identify contrast, foil, plain sketching and how "laughter" structures the story.']},
+ {c:'var(--jade)',zh:['理解時代背景','連結科舉制度與「看客」文化，理解小說的批判。'],en:['Historical context','Connect the exam system and "onlooker" culture to the story\'s critique.']},
+ {c:'var(--indigo)',zh:['反思與同理','思考旁觀者的責任，表達對生命與尊嚴的看法。'],en:['Reflect & empathise','Consider the bystander\'s responsibility and the value of every life.']}
+];
+const STEPS=[
+ {id:'s1',p:'guide',min:10,zh:['讀作者與背景','認識魯迅與清末科舉'],en:['Author & background','Meet Lu Xun and the late-Qing exams']},
+ {id:'s2',p:'explore',min:25,zh:['互動探索六元件','酒店空間、沉淪軌跡、笑聲、態度、文言、視角'],en:['Six interactive visuals','Space, decline, laughter, attitudes, speech, viewpoint']},
+ {id:'s3',p:'extend',min:20,zh:['延伸學習','科舉階梯、看客系譜、對讀與現代回響'],en:['Extension','Exam ladder, onlookers, paired reading, modern echoes']},
+ {id:'s4',p:'practice',min:15,zh:['練習區演練','排序、說話人、字詞卡、填空'],en:['Practice','Ordering, speakers, flashcards, cloze']},
+ {id:'s5',p:'quiz',min:10,zh:['完成單元測驗','目標 80 分以上'],en:['Unit quiz','Aim for 80+']},
+ {id:'s6',p:'portfolio',min:10,zh:['寫反思並下載','完成三題反思，匯出學習歷程'],en:['Reflect & download','Answer three prompts and export']}
+];
+const BEFORE={zh:['你曾經因為和別人「不一樣」而被取笑嗎？當時的感受是什麼？','一群人在笑某個人時，旁邊沒有笑的人算不算參與者？','一個人的「學歷」和「價值」可以畫上等號嗎？'],
+ en:['Have you ever been laughed at for being "different"? How did it feel?','When a crowd laughs at someone, is a silent bystander part of it?','Does a person\'s education equal their worth?']};
+const KEYW={zh:['咸亨酒店','長衫 vs 短衣','之乎者也','竊書不能算偷','茴香豆','回字四寫','粉板・十九個錢','丁舉人','看客','對比・反襯','大約…的確'],
+ en:['Xianheng Tavern','Long gown vs short coat','Classical phrases','"Taking books isn\'t stealing"','Aniseed beans','Four ways to write 回','The tally board · 19 coins','Juren Ding','Onlookers','Contrast · foil','"Probably… really"']};
+
+/* Tavern hotspots */
+const SPOTS=[
+ {k:'zhang',x:200,y:190,zh:{pos:'櫃台裡',d:'一副凶臉孔，主顧也沒有好聲氣。只記得孔乙己欠的十九個錢，對他的生死毫不在意。',q:'孔乙己還欠十九個錢呢！'},en:{pos:'Behind the counter',d:'Fierce-faced, curt with customers. Remembers only the 19 coins Kong owes, never the man himself.',q:'Kong Yiji still owes nineteen coins!'}},
+ {k:'wo',x:330,y:205,zh:{pos:'櫃台裡・溫酒',d:'十二歲的小夥計，被嫌「樣子太傻」只能專管溫酒。是全文的敘事者，也是旁觀者之一。',q:'只有孔乙己到店，才可以笑幾聲，所以至今還記得。'},en:{pos:'Behind the counter · warming wine',d:'A 12-year-old waiter, judged "too dumb-looking" for anything but warming wine. The narrator — and one of the onlookers.',q:'Only when Kong Yiji came could I laugh a little, so I still remember.'}},
+ {k:'ke',x:150,y:372,zh:{pos:'櫃台外・站著喝',d:'做工的短衣幫，花四文銅錢買一碗酒，靠櫃外站著熱熱的喝。最愛拿孔乙己取樂。',q:'孔乙己，你臉上又添上新傷疤了！'},en:{pos:'Outside the counter · standing',d:'Labourers in short coats; four coppers buy a bowl they drink standing. They love to make fun of Kong.',q:'Kong Yiji, you\'ve got new scars on your face!'}},
+ {k:'kong',x:405,y:356,zh:{pos:'櫃台外・站著喝，卻穿長衫',d:'身材高大，青白臉色，皺紋間夾著傷痕；長衫又髒又破。站在短衣幫之間，卻不肯脫下長衫——兩邊都不屬於。',q:'溫兩碗酒，要一碟茴香豆。'},en:{pos:'Outside the counter, standing — yet in a long gown',d:'Tall, pale, scars among his wrinkles; his gown filthy and torn. He stands with the labourers but won\'t take off the gown — belonging to neither side.',q:'Warm two bowls of wine, and a dish of aniseed beans.'}},
+ {k:'gown',x:665,y:150,zh:{pos:'隔壁房子・坐著喝',d:'穿長衫的闊綽主顧，踱進店面隔壁的房子，要酒要菜，慢慢地坐喝。孔乙己渴望卻永遠進不去的世界。',q:'只有穿長衫的，才踱進店面隔壁的房子裡，要酒要菜，慢慢地坐喝。'},en:{pos:'Inner room · seated',d:'Well-off patrons in long gowns stroll into the inner room, order wine and dishes, and drink at leisure — the world Kong longs for but never enters.',q:'Only those in long gowns strolled into the room next door to sit and drink at leisure.'}}
+];
+
+/* Decline timeline */
+const STAGES=[
+ {zh:{t:'初登場',when:'某日',dress:'又髒又破、似乎十多年沒有補也沒有洗的長衫',pose:'站著喝酒',money:'排出九文大錢',others:'「孔乙己，你臉上又添上新傷疤了！」',line:'「溫兩碗酒，要一碟茴香豆。」',note:'窮卻擺闊，以長衫守住讀書人的身分。'},en:{t:'First appearance',when:'One day',dress:'A long gown, filthy and torn, unmended and unwashed for a decade',pose:'Drinks standing',money:'Lays out nine coppers',others:'"You\'ve got new scars on your face!"',line:'"Warm two bowls of wine, and a dish of aniseed beans."',note:'Poor yet showy — the gown guards his scholar identity.'},dig:72,body:70,laugh:60,stand:1},
+ {zh:{t:'偷書被揭',when:'同一天',dress:'同一件破長衫',pose:'漲紅了臉，額上青筋條條綻出',money:'—',others:'「我前天親眼見你偷了何家的書，吊著打。」',line:'「竊書不能算偷……讀書人的事，能算偷麼？」',note:'用「竊」字粉飾，以文言自欺，眾人哄笑。'},en:{t:'Exposed as a thief',when:'Same day',dress:'The same torn gown',pose:'Face flushed, veins standing out',money:'—',others:'"I saw you strung up and beaten for stealing the He family\'s books!"',line:'"Taking books isn\'t stealing… a scholar\'s affair!"',note:'He dresses theft in classical words; the crowd roars.'},dig:48,body:62,laugh:90,stand:1},
+ {zh:{t:'教字・分豆',when:'某些時候',dress:'破長衫',pose:'彎腰對孩子說話，用手罩住碟子',money:'—',others:'「我」：「討飯一樣的人，也配考我麼？」',line:'「多乎哉？不多也。」',note:'難得的善意與學問，卻無處安放；孩子們也在笑聲裡走散。'},en:{t:'Teaching & sharing beans',when:'Sometimes',dress:'Torn gown',pose:'Bending to children, covering the dish',money:'—',others:'"I": "A beggar like him — fit to test me?"',line:'"Many? Not many indeed."',note:'Rare kindness and learning with nowhere to go; even the kids scatter laughing.'},dig:38,body:55,laugh:70,stand:1},
+ {zh:{t:'斷腿・最後一次',when:'中秋過後・初冬',dress:'一件破夾襖（長衫不見了）',pose:'盤著兩腿，墊一個蒲包，用手走來',money:'摸出四文大錢，滿手是泥',others:'掌櫃笑著：「你又偷了東西了！」',line:'「不要取笑！」「跌斷，跌，跌……」',note:'偷到丁舉人家被打折了腿。長衫消失，連站著喝酒都做不到了。'},en:{t:'Legs broken · last visit',when:'After Mid-Autumn · early winter',dress:'A torn lined jacket (the gown is gone)',pose:'Legs crossed on a rush mat, walking on his hands',money:'Four coppers in a mud-caked hand',others:'Shopkeeper, laughing: "Stealing again!"',line:'"Don\'t make fun of me!" "Broke them in a fall…"',note:'Beaten by Juren Ding. The gown is gone; he can no longer even stand.'},dig:12,body:12,laugh:55,stand:0},
+ {zh:{t:'消失',when:'年關・端午・中秋',dress:'—',pose:'不再出現',money:'粉板上仍欠十九個錢',others:'「孔乙己還欠十九個錢呢！」→ 到中秋可是沒有說',line:'我到現在終於沒有見——大約孔乙己的確死了。',note:'連掌櫃也不再提他。「沒有他，別人也便這麼過。」'},en:{t:'Gone',when:'New Year · Dragon Boat · Mid-Autumn',dress:'—',pose:'Never seen again',money:'Still owes 19 coins on the board',others:'"He still owes 19 coins!" → by Mid-Autumn, no one says it',line:'To this day I have not seen him — probably Kong Yiji really is dead.',note:'Even the shopkeeper stops mentioning him. "Without him, everyone got on just the same."'},dig:0,body:0,laugh:0,stand:-1}
+];
+
+/* Laughter moments */
+const LAUGHERS=['ke','zhang','wo','kids'];
+const LAUGHS=[
+ {who:['ke'],h:70,zh:{t:'一到店，所有喝酒的人便都看著他笑',q:'孔乙己一到店，所有喝酒的人便都看著他笑。',a:'笑聲在孔乙己出場的一刻就已經準備好了——他的出現本身就是「節目」。'},en:{t:'The moment he arrives, everyone laughs',q:'As soon as Kong Yiji came in, all the drinkers looked at him and laughed.',a:'The laughter is ready before he speaks — his very presence is the show.'}},
+ {who:['ke'],h:95,zh:{t:'被揭偷書，眾人哄笑',q:'引得眾人都哄笑起來：店內外充滿了快活的空氣。',a:'「快活的空氣」與孔乙己的窘迫形成強烈反襯：別人的痛苦成了大家的樂子。'},en:{t:'Exposed as a thief — uproar',q:'Everyone roared with laughter; the whole tavern was filled with happiness.',a:'"Happiness" set against his humiliation — a sharp foil: one man\'s pain is everyone\'s fun.'}},
+ {who:['ke','zhang','wo'],h:85,zh:{t:'問他是否識字、半個秀才',q:'在這些時候，我可以附和著笑，掌櫃是決不責備的。',a:'連掌櫃都「每每這樣問他，引人發笑」，連小夥計也被允許加入——嘲笑是被默許的集體行為。'},en:{t:'"Can you even read? Not half a scholar?"',q:'At such times I could join in the laughter without the shopkeeper scolding me.',a:'The shopkeeper provokes it too, and the boy is allowed to join — mockery as a sanctioned group act.'}},
+ {who:['kids'],h:45,zh:{t:'分茴香豆，孩子在笑聲裡走散',q:'於是這一群孩子都在笑聲裡走散了。',a:'連孩子也只是「趕熱鬧」。孔乙己唯一的善意，結局仍是笑聲。'},en:{t:'Sharing beans — kids scatter laughing',q:'And the children ran off amid the laughter.',a:'Even the kids just came for the fun. His one act of kindness also ends in laughter.'}},
+ {who:['zhang','ke'],h:65,zh:{t:'斷腿後最後一次來店',q:'他們的說笑聲中，坐著用這手慢慢走去了。',a:'面對一個殘廢的人，掌櫃「仍然同平常一樣，笑著」。笑聲送走了他的最後背影。'},en:{t:'His last visit after the beating',q:'Amid their laughter, he slowly went off, walking on his hands.',a:'Facing a crippled man, the shopkeeper still laughs "as usual". Laughter sees him off for good.'}},
+ {who:[],h:0,zh:{t:'他消失之後，再也沒有笑聲',q:'孔乙己是這樣的使人快活，可是沒有他，別人也便這麼過。',a:'笑聲停止，不是因為有人醒悟，而是因為笑料不見了。這是全文最冷的一句。'},en:{t:'After he vanishes — silence',q:'Kong Yiji made people happy, but without him everyone got on just the same.',a:'The laughter stops not from remorse but because the joke is gone. The coldest line in the story.'}}
+];
+
+/* Attitude spectrum: 0 = cruel/hostile, 100 = sympathetic */
+const ATT=[
+ {k:'ding',ref:5,zh:'動用私刑，打折孔乙己的腿：「先寫服辯，後來是打，打了大半夜，再打折了腿。」代表有權有勢者的殘暴。',en:'Takes the law into his own hands and breaks Kong\'s legs — the brutality of the powerful.'},
+ {k:'zhang',ref:22,zh:'只在乎十九個錢；看到斷腿的孔乙己，第一句仍是欠帳，還笑著揭短。冷酷而功利。',en:'Cares only about the 19 coins; his first words to the crippled man are about the debt. Cold and mercenary.'},
+ {k:'ke',ref:30,zh:'以揭短、取笑為樂，製造「快活的空氣」。他們同樣是底層，卻把更弱的人當笑料。',en:'Mock him for fun, creating the "happy atmosphere". Poor themselves, they turn on someone weaker.'},
+ {k:'wo',ref:45,zh:'從「附和著笑」到「不再理會」，事後以平靜筆調回憶。冷漠的旁觀者，回憶中只隱約透出一點悵惘。',en:'From laughing along to ignoring him; recalls it all calmly years later — an indifferent onlooker with only a faint trace of regret.'},
+ {k:'kids',ref:58,zh:'被笑聲吸引來「趕熱鬧」，接受了茴香豆，又在笑聲裡走散。好奇但無感。',en:'Drawn by the laughter, take the beans, scatter laughing. Curious but unmoved.'}
+];
+
+/* Classical speech flip cards */
+const FLIPS=[
+ {zh:{f:'竊書不能算偷……讀書人的事，能算偷麼？',b:'「竊」與「偷」同義',d:'他用文雅的字眼替偷竊換上外衣，以讀書人身分自我辯護，迂腐而自欺。'},en:{f:'"Taking books isn\'t stealing… a scholar\'s affair?"',b:'"Take" and "steal" mean the same',d:'He re-dresses theft in elegant words, hiding behind scholar status — pedantic self-deception.'}},
+ {zh:{f:'君子固窮',b:'出自《論語・衛靈公》',d:'原意：君子在窮困時仍能堅守節操。他借聖人之言掩飾窘境，與偷書的行為形成諷刺。'},en:{f:'"A gentleman stays firm in poverty"',b:'From the Analects',d:'Confucius meant integrity in hardship; Kong uses it to cover his plight — ironic beside his thefts.'}},
+ {zh:{f:'多乎哉？不多也。',b:'化用《論語・子罕》',d:'原指「君子會的技藝多嗎？不多」。他拿來對孩子說豆子不多了——滿腹經書只用在一碟茴香豆上，可笑又可憐。'},en:{f:'"Many? Not many indeed."',b:'Borrowed from the Analects',d:'Originally about a gentleman\'s skills; he uses it to tell kids the beans are nearly gone — classical learning spent on a dish of beans.'}},
+ {zh:{f:'回字有四樣寫法，你知道麼？',b:'異體字的「學問」',d:'他引以為傲的知識在現實裡毫無用處，象徵僵化、脫離生活的科舉教育。'},en:{f:'"Did you know 回 can be written four ways?"',b:'Variant-character "learning"',d:'The knowledge he prizes is useless in real life — a symbol of rigid exam-based education.'}},
+ {zh:{f:'跌斷，跌，跌……',b:'結巴的辯解',d:'不願承認腿是被打斷的，語句斷裂，透露他最後僅存的面子與恐懼。'},en:{f:'"Broke them in a fall, fell, fell…"',b:'A stammered excuse',d:'He won\'t admit he was beaten; the broken phrasing reveals his last shred of face — and fear.'}},
+ {zh:{f:'上大人孔乙己',b:'描紅紙上的字',d:'舊時孩童習字的描紅紙文句。他的綽號由此而來——連名字都是別人隨口給的，沒有人知道他的真名。'},en:{f:'"Shang da ren Kong Yi ji"',b:'Words from a child\'s copybook',d:'A phrase from children\'s tracing sheets. His nickname comes from it — no one even knows his real name.'}}
+];
+const HUI=['回','囘','囬'];
+
+/* Narrative lenses */
+const LENSES=[
+ {k:'kid',bg:'var(--jadeSoft)',zh:{t:'十二歲的「我」',s:'當時・身在現場',lines:['孔乙己問我：「你讀過書麼？」','我略略點一點頭。','他說：「讀過書，……我便考你一考。茴香豆的茴字，怎樣寫的？」','我想，討飯一樣的人，也配考我麼？便回過臉去，不再理會。'],a:'孩子的眼光是直接的：在他眼中，孔乙己只是個可以瞧不起的人。連最底層的小夥計，也學會了大人的勢利。'},en:{t:'"I" at twelve',s:'Then · on the spot',lines:['Kong Yiji asked me, "Have you studied?"','I gave a slight nod.','"Then I\'ll test you. How do you write the 茴 in aniseed beans?"','I thought: a beggar like him — fit to test me? I turned away and ignored him.'],a:'The child\'s gaze is blunt: Kong is simply someone to look down on. Even the lowest boy has learned the adults\' snobbery.'}},
+ {k:'adult',bg:'var(--skySoft)',zh:{t:'二十多年後的「我」',s:'回憶・敘述者',lines:['這是二十多年前的事。','只有孔乙己到店，才可以笑幾聲，所以至今還記得。','我到現在終於沒有見——','大約孔乙己的確死了。'],a:'成年的「我」用平靜、近乎無情的語調回憶。「大約」與「的確」並置：不確定他的生死，卻又確知他必死無疑——冷靜之下，有一絲遲來的悵惘。'},en:{t:'"I" twenty years later',s:'Recollection · narrator',lines:['This happened over twenty years ago.','Only when Kong Yiji came could I laugh, so I still remember.','To this day I have not seen him —','probably Kong Yiji really is dead.'],a:'The adult narrator recalls in a calm, almost heartless tone. "Probably" beside "really": unsure of his death yet certain of it — a belated wistfulness beneath the calm.'}},
+ {k:'kong',bg:'var(--goldSoft)',zh:{t:'孔乙己的內心（想像改寫）',s:'學習用想像，非原文',lines:['（這孩子也許還肯聽我說幾個字……）','（將來他做掌櫃，寫賬要用的。）','（他轉過臉去了。罷了，罷了。）','（回字有四樣寫法，這世上，還有誰要知道呢？）'],a:'原文從不進入孔乙己的內心。試著替他發聲，你會發現：他想被尊重、想有用，卻找不到一個願意聽的人。'},en:{t:'Kong\'s inner voice (imagined)',s:'Imagined for learning, not the original',lines:['(Perhaps this boy will listen to a few characters…)','(He\'ll need them for accounts one day.)','(He turned away. Never mind, never mind.)','(Four ways to write 回 — who in this world still wants to know?)'],a:'The story never enters Kong\'s mind. Voicing him, you find a man who wants respect and usefulness but finds no one to listen.'}},
+ {k:'author',bg:'var(--plumSoft)',zh:{t:'作者魯迅的鏡頭',s:'為什麼選這個敘事者？',lines:['讓一個孩子當敘事者——','他既在現場，又不完全懂；','他不評論，只是記錄；','於是，讀者自己感到刺痛。'],a:'魯迅不直接控訴，而是借「我」冷淡的眼睛，讓整個社會的涼薄自己顯露出來。讀者讀到最後，才發現自己也曾坐在看客席上。'},en:{t:'Lu Xun\'s lens',s:'Why this narrator?',lines:['Make a child the narrator —','present, yet not fully understanding;','he records without judging;','so the reader feels the sting alone.'],a:'Lu Xun never accuses directly; through the boy\'s indifferent eyes society\'s coldness reveals itself — and readers find they too sat among the onlookers.'}}
+];
+
+/* Exam ladder */
+const LADDER=[
+ {lv:'進',c:'#b4469a',zh:{n:'進士',e:'會試、殿試',d:'科舉最高一級，可任官。讀書人夢寐以求的終點。',who:''},en:{n:'Jinshi',e:'Metropolitan & palace exams',d:'The highest degree, leading to office — every scholar\'s dream.',who:''}},
+ {lv:'舉',c:'#4f5bd5',zh:{n:'舉人',e:'鄉試（省級）',d:'有資格做官，地方上的權勢人物。小說中「丁舉人」可以私設刑堂，打斷孔乙己的腿。',who:'丁舉人'},en:{n:'Juren',e:'Provincial exam',d:'Eligible for office, a local power. "Juren Ding" can hold his own trial and break Kong\'s legs.',who:'Juren Ding'}},
+ {lv:'秀',c:'#0f9f7c',zh:{n:'秀才（生員）',e:'院試',d:'取得功名的第一步，稱為「進學」。酒客嘲笑孔乙己「連半個秀才也撈不到」。',who:''},en:{n:'Xiucai',e:'Prefectural exam',d:'The first rung, called "entering the academy". Drinkers jeer that Kong never got "even half" of it.',who:''}},
+ {lv:'童',c:'#f2a516',zh:{n:'童生',e:'尚未考取秀才者',d:'不論年紀多大，沒考上秀才都叫童生。孔乙己終其一生停在這裡，又「不會營生」。',who:'孔乙己'},en:{n:'Tongsheng',e:'Not yet a xiucai',d:'Whatever one\'s age, failing the first exam leaves you a "tongsheng". Kong stays here all his life.',who:'Kong Yiji'}}
+];
+
+const EXT=[
+ {ico:'💊',c:'var(--redSoft)',zh:{t:'〈藥〉（1919）',d:'華老栓用人血饅頭替兒子治病，那血來自被處決的革命者夏瑜；刑場上，看客「頸項都伸得很長」。',k:'看客・愚昧'},en:{t:'"Medicine" (1919)',d:'Old Hua buys a bun soaked in an executed revolutionary\'s blood to cure his son; at the execution onlookers "crane their necks".',k:'Onlookers · ignorance'}},
+ {ico:'🕯️',c:'var(--goldSoft)',zh:{t:'〈祝福〉（1924）',d:'祥林嫂一次次訴說兒子阿毛被狼叼走，鎮上人從陪著流淚，到厭煩、學舌取笑。',k:'苦難被消費'},en:{t:'"The New Year\'s Sacrifice" (1924)',d:'Xianglin\'s Wife retells her son\'s death; townsfolk move from tears to boredom to mimicry.',k:'Suffering consumed'}},
+ {ico:'🎭',c:'var(--indigoSoft)',zh:{t:'〈阿Q正傳〉（1921）',d:'阿Q被押赴刑場，圍觀的人群只覺得他沒唱幾句戲，「白跟一趟」。',k:'麻木的群眾'},en:{t:'"The True Story of Ah Q" (1921)',d:'As Ah Q is paraded to execution, the crowd complains he didn\'t even sing — "a wasted trip".',k:'Numb crowds'}},
+ {ico:'🎞️',c:'var(--skySoft)',zh:{t:'《吶喊・自序》幻燈片事件',d:'魯迅在日本學醫時，看到幻燈片中中國人圍觀同胞被殺而神情麻木，決心棄醫從文，「改變他們的精神」。',k:'棄醫從文'},en:{t:'Preface to "Call to Arms"',d:'Studying medicine in Japan, Lu Xun saw a slide of Chinese watching a compatriot executed, numb — and turned to literature to "change their spirit".',k:'From medicine to letters'}},
+ {ico:'📜',c:'var(--jadeSoft)',zh:{t:'對讀：〈范進中舉〉',d:'吳敬梓《儒林外史》中，范進考了幾十年終於中舉，竟歡喜得發瘋。對照孔乙己：考不上是悲劇，考上了也荒謬。',k:'科舉的兩面'},en:{t:'Pair with "Fan Jin Passes the Exam"',d:'In "The Scholars", Fan Jin finally passes after decades — and goes mad with joy. Failing is tragic; passing is absurd too.',k:'Two faces of the exams'}},
+ {ico:'📱',c:'var(--plumSoft)',zh:{t:'現代回響：「孔乙己文學」',d:'2023 年中國網路流行「孔乙己文學」，年輕人自嘲學歷成了「脫不下的長衫」。一百年後，長衫仍在嗎？',k:'學歷與身分焦慮'},en:{t:'Modern echo: "Kong Yiji literature"',d:'In 2023 Chinese netizens joked that degrees had become "a long gown we can\'t take off". A century on, is the gown still here?',k:'Degree & status anxiety'}}
+];
+const TECH=[
+ {zh:['對比','站著喝的短衣幫 vs. 坐著喝的長衫主顧；孔乙己「站著喝酒而穿長衫」，一句話寫盡他尷尬的位置。'],en:['Contrast','Standing labourers vs. seated gentry; "drank standing yet wore a long gown" captures his awkward place in one line.']},
+ {zh:['反襯（以樂寫哀）','「店內外充滿了快活的空氣」——眾人越快活，越顯出孔乙己的悲涼與社會的冷漠。'],en:['Foil (joy to show sorrow)','"The tavern was filled with happiness" — the merrier they are, the bleaker Kong\'s plight.']},
+ {zh:['白描肖像','「身材很高大；青白臉色，皺紋間時常夾些傷痕」，不加評論，以簡筆勾勒出一生的困頓。'],en:['Plain sketching','"Tall, pale, scars among the wrinkles" — no comment, just strokes that sum up a hard life.']},
+ {zh:['細節伏筆・首尾呼應','「粉板上的十九個錢」從中段貫穿到結尾，成為孔乙己存在過的唯一證據。'],en:['Recurring detail','The "19 coins on the tally board" runs to the end — the only proof he ever existed.']},
+ {zh:['矛盾修辭','「大約孔乙己的確死了」——「大約」是沒人確認，「的確」是必然如此，冷漠與沉痛並存。'],en:['Paradox','"Probably… really is dead" — no one checked, yet it is certain: coldness and grief together.']},
+ {zh:['第一人稱旁觀視角','以十二歲小夥計回憶，既在場又疏離，讓讀者自行感受冷漠。'],en:['First-person onlooker','A 12-year-old waiter recalling years later — present yet detached, letting readers feel the coldness.']}
+];
+const INQ={zh:['替孔乙己寫一封他從未收到的信，你想對他說什麼？','如果你是小夥計，在哪一個時刻最有機會改變孔乙己的處境？你會怎麼做？','找一則新聞或身邊的例子，說明現代社會裡的「看客」現象。','「長衫」象徵什麼？在今天，什麼是我們「脫不下的長衫」？'],
+ en:['Write Kong Yiji a letter he never received. What would you say?','As the boy, at which moment could you most change Kong\'s situation? What would you do?','Find a news story or example of "onlooker" behaviour today.','What does the "long gown" symbolise? What is our "gown we can\'t take off" today?']};
+
+/* Practice data */
+const PLOT=[
+ {zh:'「我」十二歲在咸亨酒店當小夥計，專管溫酒，單調無聊。',en:'At twelve, "I" work at the Xianheng Tavern, only warming wine — dull work.'},
+ {zh:'孔乙己登場：站著喝酒而穿長衫，排出九文大錢。',en:'Kong Yiji appears: drinking standing in a long gown, laying out nine coppers.'},
+ {zh:'酒客揭他偷書，他辯稱「竊書不能算偷」，眾人哄笑。',en:'Drinkers expose his book theft; he says "taking books isn\'t stealing". Uproar.'},
+ {zh:'孔乙己想教「我」回字的四種寫法，又分茴香豆給孩子們。',en:'Kong tries to teach "me" four ways to write 回, and shares beans with children.'},
+ {zh:'中秋前，掌櫃想起他還欠十九個錢；酒客說他偷丁舉人家，被打折了腿。',en:'Before Mid-Autumn, the shopkeeper recalls the 19-coin debt; he hears Kong\'s legs were broken at Juren Ding\'s.'},
+ {zh:'初冬，孔乙己墊著蒲包、用手走來，喝了最後一碗酒。',en:'Early winter: Kong comes on a rush mat, walking on his hands, for a last bowl.'},
+ {zh:'年關、端午都不見他——「大約孔乙己的確死了」。',en:'New Year and Dragon Boat pass without him — "probably Kong Yiji really is dead".'}
+];
+const QUOTES=[
+ ['kong',{zh:'溫兩碗酒，要一碟茴香豆。',en:'Warm two bowls of wine, and a dish of aniseed beans.'}],
+ ['kong',{zh:'你怎麼這樣憑空污人清白……',en:'How can you slander an innocent man like this…'}],
+ ['kong',{zh:'竊書不能算偷……讀書人的事，能算偷麼？',en:'Taking books isn\'t stealing… a scholar\'s affair!'}],
+ ['kong',{zh:'回字有四樣寫法，你知道麼？',en:'Did you know 回 can be written four ways?'}],
+ ['kong',{zh:'不多不多！多乎哉？不多也。',en:'Not many! Many? Not many indeed.'}],
+ ['kong',{zh:'跌斷，跌，跌……',en:'Broke them in a fall, fell, fell…'}],
+ ['kong',{zh:'不要取笑！',en:'Don\'t make fun of me!'}],
+ ['zhang',{zh:'孔乙己長久沒有來了。還欠十九個錢呢！',en:'Kong Yiji hasn\'t come for ages. He still owes nineteen coins!'}],
+ ['zhang',{zh:'後來怎麼樣？',en:'And what happened after that?'}],
+ ['zhang',{zh:'孔乙己，你又偷了東西了！',en:'Kong Yiji, you\'ve been stealing again!'}],
+ ['ke',{zh:'孔乙己，你臉上又添上新傷疤了！',en:'Kong Yiji, you\'ve got new scars on your face!'}],
+ ['ke',{zh:'什麼清白？我前天親眼見你偷了何家的書，吊著打。',en:'Innocent? I saw you strung up and beaten for stealing the He family\'s books.'}],
+ ['ke',{zh:'你怎的連半個秀才也撈不到呢？',en:'How come you never got even half a degree?'}],
+ ['ke',{zh:'怎樣？……誰曉得？許是死了。',en:'What happened? Who knows? Dead, maybe.'}],
+ ['wo',{zh:'誰要你教，不是草頭底下一個來回的回字麼？',en:'Who needs you? Isn\'t it just 回 under the grass radical?'}],
+ ['wo',{zh:'討飯一樣的人，也配考我麼？',en:'A beggar like him — fit to test me?'}],
+ ['wo',{zh:'我到現在終於沒有見——大約孔乙己的確死了。',en:'To this day I have not seen him — probably he really is dead.'}]
+];
+const VOCAB=[
+ {w:'曲尺形',zh:'像木工角尺般的直角 L 形。咸亨酒店「當街一個曲尺形的大櫃台」。',en:'L-shaped, like a carpenter\'s square — the tavern\'s big counter.'},
+ {w:'短衣幫',zh:'穿短衣的勞動階層，只能靠櫃外站著喝酒。',en:'Labourers in short coats who drink standing at the counter.'},
+ {w:'長衫',zh:'長袍，讀書人或有身分者的服裝；孔乙己身分的最後象徵。',en:'Long gown — dress of scholars and gentry; Kong\'s last badge of status.'},
+ {w:'茴香豆',zh:'用茴香等香料煮的蠶豆，一文錢一碟的下酒菜。',en:'Broad beans stewed with aniseed — a one-copper snack with wine.'},
+ {w:'粉板',zh:'塗白粉的木板，用來記錄賒帳；寫著孔乙己欠的十九個錢。',en:'A whitewashed board recording credit — where Kong\'s 19 coins are written.'},
+ {w:'描紅紙',zh:'印有紅色字樣、讓孩童描摹練字的紙。',en:'A copybook sheet with red characters for children to trace.'},
+ {w:'進學',zh:'考取秀才，成為府、州、縣學的生員。',en:'To pass the first exam and become a licentiate (xiucai).'},
+ {w:'營生',zh:'謀生的方法。孔乙己「又不會營生」。',en:'A way to make a living — which Kong "never learned".'},
+ {w:'舉人',zh:'鄉試考中者，地方上有權勢的人物。',en:'Passer of the provincial exam — a local power.'},
+ {w:'蒲包',zh:'用蒲草編成的袋子；斷腿的孔乙己墊著它「走」來。',en:'A rush-woven sack Kong sits on after his legs are broken.'},
+ {w:'年關',zh:'農曆年底，舊時必須結清債務的時候。',en:'Year\'s end, when debts traditionally had to be settled.'},
+ {w:'頹唐',zh:'精神萎靡、意志消沉的樣子。',en:'Dispirited, crestfallen.'},
+ {w:'綻出',zh:'（青筋）暴起、凸出來。',en:'(Of veins) to bulge out.'},
+ {w:'君子固窮',zh:'君子在窮困時仍能固守節操。語出《論語》。',en:'A gentleman holds firm in poverty (Analects).'}
+];
+const CLOZE=[
+ {s:{zh:'孔乙己是站著喝酒而穿＿＿的唯一的人。',en:'Kong Yiji was the only one who drank standing in a ＿＿.'},a:0,o:{zh:['長衫','短衣','夾襖','馬褂'],en:['long gown','short coat','lined jacket','riding jacket']}},
+ {s:{zh:'他對人說話，總是滿口＿＿，教人半懂不懂的。',en:'He always spoke in ＿＿, half understood by others.'},a:1,o:{zh:['仁義道德','之乎者也','詩云子曰','風花雪月'],en:['moral sermons','classical particles','poetry quotes','romantic verse']}},
+ {s:{zh:'竊書不能算＿＿……讀書人的事，能算＿＿麼？',en:'Taking books isn\'t ＿＿… a scholar\'s affair!'},a:2,o:{zh:['錯','罪','偷','搶'],en:['wrong','a crime','stealing','robbery']}},
+ {s:{zh:'孔乙己還欠＿＿個錢呢！',en:'Kong Yiji still owes ＿＿ coins!'},a:3,o:{zh:['九','四','十','十九'],en:['nine','four','ten','nineteen']}},
+ {s:{zh:'我到現在終於沒有見——大約孔乙己＿＿死了。',en:'To this day I have not seen him — probably Kong Yiji ＿＿ is dead.'},a:0,o:{zh:['的確','也許','早已','竟然'],en:['really','perhaps','long since','surprisingly']}},
+ {s:{zh:'孔乙己是這樣的使人＿＿，可是沒有他，別人也便這麼過。',en:'Kong Yiji made people ＿＿, but without him everyone got on just the same.'},a:1,o:{zh:['同情','快活','憤怒','害怕'],en:['pity him','happy','angry','afraid']}},
+ {s:{zh:'他便排出＿＿大錢。',en:'He laid out ＿＿ coppers.'},a:2,o:{zh:['四文','十九文','九文','一文'],en:['four','nineteen','nine','one']}},
+ {s:{zh:'引得眾人都哄笑起來：店內外充滿了＿＿的空氣。',en:'Everyone roared; the tavern was filled with ＿＿.'},a:3,o:{zh:['緊張','悲傷','冷漠','快活'],en:['tension','sadness','coldness','happiness']}},
+ {s:{zh:'他臉上黑而且瘦，已經不成樣子；穿一件破＿＿，盤著兩腿。',en:'His face was dark and thin; he wore a torn ＿＿, legs crossed.'},a:1,o:{zh:['長衫','夾襖','棉袍','短衣'],en:['long gown','lined jacket','padded robe','short coat']}}
+];
+
+/* Quiz bank */
+const QB=[
+ {q:{zh:'〈孔乙己〉的敘事者是誰？',en:'Who narrates "Kong Yiji"?'},o:{zh:['孔乙己本人','咸亨酒店掌櫃','當年的小夥計「我」','一位旁觀的酒客'],en:['Kong himself','The shopkeeper','"I", the former waiter','A drinker']},a:2,e:{zh:'全文由二十多年前在咸亨酒店當小夥計的「我」回憶敘述。',en:'It is told by "I", recalling his days as a waiter over twenty years earlier.'}},
+ {q:{zh:'「孔乙己是站著喝酒而穿長衫的唯一的人。」這句話主要凸顯什麼？',en:'What does "the only one who drank standing in a long gown" highlight?'},o:{zh:['孔乙己很有錢','他處在兩個階層之間的尷尬地位','長衫比短衣保暖','酒店的座位不夠'],en:['He was rich','His awkward place between two classes','Gowns are warmer','Too few seats']},a:1,e:{zh:'站著喝酒屬於短衣幫，穿長衫屬於讀書人；他兩邊都不被接納。',en:'Standing marks the labourers, the gown marks scholars; he belongs to neither.'}},
+ {q:{zh:'孔乙己的綽號從何而來？',en:'Where does Kong Yiji\'s nickname come from?'},o:{zh:['他的本名','描紅紙上「上大人孔乙己」','掌櫃替他取的官名','他考試的准考證'],en:['His real name','"Shang da ren Kong Yi ji" on a copybook','A title from the shopkeeper','His exam ticket']},a:1,e:{zh:'因他姓孔，別人便從描紅紙上半懂不懂的話裡替他取了綽號——無人知其真名。',en:'Because his surname was Kong, people took the nickname from a copybook phrase; no one knew his real name.'}},
+ {q:{zh:'「竊書不能算偷」反映孔乙己怎樣的性格？',en:'"Taking books isn\'t stealing" reveals what trait?'},o:{zh:['誠實坦率','幽默風趣','迂腐、自欺欺人','勇於認錯'],en:['Honesty','Humour','Pedantic self-deception','Owning up']},a:2,e:{zh:'「竊」「偷」同義，他用文言字眼替自己開脫，顯出迂腐與自欺。',en:'"Take" and "steal" are synonyms; he hides behind classical wording.'}},
+ {q:{zh:'孔乙己品行上「比別人都好」的一點是什麼？',en:'In what way was Kong\'s conduct "better than others"?'},o:{zh:['從不喝醉','從不拖欠酒錢','從不說謊','從不偷東西'],en:['Never drunk','Never defaulted on wine debts','Never lied','Never stole']},a:1,e:{zh:'原文：「他在我們店裡，品行卻比別人都好，就是從不拖欠」，暫記粉板也會在一個月內還清。',en:'"In our shop his conduct was better than others\' — he never defaulted", always paying within a month.'}},
+ {q:{zh:'小說中「笑」反覆出現，主要作用是什麼？',en:'Why does "laughter" recur throughout?'},o:{zh:['增加喜劇效果，讓讀者輕鬆','以樂寫哀，反襯社會的冷漠','說明咸亨酒店生意興隆','表現孔乙己的樂觀'],en:['Pure comedy','Joy to show sorrow — exposing coldness','Shows good business','Shows Kong\'s optimism']},a:1,e:{zh:'眾人的笑聲越多，越反襯孔乙己的悲苦與看客的麻木。',en:'The more they laugh, the starker Kong\'s misery and the onlookers\' numbness.'}},
+ {q:{zh:'孔乙己的腿是怎麼斷的？',en:'How were Kong Yiji\'s legs broken?'},o:{zh:['喝醉跌倒','被馬車撞傷','偷到丁舉人家被打折','在何家做工受傷'],en:['A drunken fall','Hit by a cart','Beaten at Juren Ding\'s for stealing','Hurt working for the Hes']},a:2,e:{zh:'酒客說他「偷到丁舉人家裡去了」，被打了大半夜，打折了腿。他自己卻說是「跌斷」。',en:'He was beaten half the night at Juren Ding\'s house; he himself claims he "fell".'}},
+ {q:{zh:'掌櫃對孔乙己最在意的是什麼？',en:'What does the shopkeeper care about most regarding Kong?'},o:{zh:['他的健康','他的學問','他欠的十九個錢','他的家人'],en:['His health','His learning','The 19 coins he owes','His family']},a:2,e:{zh:'從中秋、年關到端午，掌櫃只惦記粉板上的十九個錢。',en:'From Mid-Autumn to New Year to Dragon Boat, he only remembers the 19 coins.'}},
+ {q:{zh:'孔乙己最後一次到店，最明顯的外在變化是？',en:'On his last visit, the most visible change is…'},o:{zh:['換上新長衫','長衫不見，穿破夾襖、坐蒲包用手走來','剃了鬍子','帶了很多錢'],en:['A new gown','Gown gone; torn jacket, on a rush mat, walking on hands','Shaved beard','Lots of money']},a:1,e:{zh:'長衫——他讀書人身分的象徵——消失了，他連站著喝酒都做不到。',en:'The gown — his scholar symbol — is gone; he cannot even stand to drink.'}},
+ {q:{zh:'「大約孔乙己的確死了」中「大約」與「的確」並用，表達了什麼？',en:'What does pairing "probably" with "really" convey?'},o:{zh:['作者用字錯誤','沒人確認他的死，但他必死無疑；冷漠與沉痛並存','孔乙己其實還活著','敘述者很高興'],en:['A slip of the pen','No one confirmed it, yet it\'s certain — coldness and grief','He\'s still alive','The narrator is glad']},a:1,e:{zh:'「大約」顯示無人關心、無從確認；「的確」表示以他的處境必然死去。',en:'"Probably": no one cared to check. "Really": in his state, death was certain.'}},
+ {q:{zh:'孔乙己問「我」回字有幾種寫法，主要反映什麼？',en:'Kong asking how many ways to write 回 mainly shows…'},o:{zh:['他學問淵博受人敬重','他的知識僵化無用，只能在孩子面前賣弄','他想當老師賺錢','他在考驗掌櫃'],en:['Respected erudition','Rigid, useless learning shown off to a child','He wants to tutor for money','He\'s testing the shopkeeper']},a:1,e:{zh:'異體字知識在現實生活中毫無用處，象徵科舉教育的僵化。',en:'Variant characters are useless in real life — a symbol of rigid exam education.'}},
+ {q:{zh:'下列何者最能說明小說批判的對象？',en:'Which best describes what the story critiques?'},o:{zh:['只批判孔乙己好吃懶做','科舉制度與冷漠麻木的社會','咸亨酒店的經營方式','孩子不愛讀書'],en:['Only Kong\'s laziness','The exam system and a cold, numb society','The tavern\'s business','Kids not studying']},a:1,e:{zh:'小說同時揭露科舉對讀書人的毒害，以及「看客」社會的涼薄。',en:'It exposes both the exam system\'s damage and the callousness of an onlooker society.'}},
+ {q:{zh:'孔乙己分茴香豆給孩子們時說「多乎哉？不多也」，這句話出自何書？',en:'"Many? Not many indeed" is borrowed from…'},o:{zh:['《孟子》','《論語》','《史記》','《詩經》'],en:['Mencius','The Analects','Records of the Historian','Book of Songs']},a:1,e:{zh:'化用《論語・子罕》「君子多乎哉？不多也」。',en:'Adapted from the Analects (Zihan chapter).'}},
+ {q:{zh:'〈孔乙己〉收錄於魯迅哪一部小說集？',en:'"Kong Yiji" is collected in which Lu Xun book?'},o:{zh:['《徬徨》','《吶喊》','《朝花夕拾》','《故事新編》'],en:['Wandering','Call to Arms','Dawn Blossoms Plucked at Dusk','Old Tales Retold']},a:1,e:{zh:'〈孔乙己〉1919 年發表，收入第一本小說集《吶喊》。',en:'Published in 1919, it is collected in his first story collection, "Call to Arms".'}},
+ {q:{zh:'魯迅的本名是？',en:'Lu Xun\'s real name was…'},o:{zh:['周作人','周樹人','胡適','沈從文'],en:['Zhou Zuoren','Zhou Shuren','Hu Shi','Shen Congwen']},a:1,e:{zh:'魯迅本名周樹人，浙江紹興人；周作人是他的弟弟。',en:'Lu Xun was Zhou Shuren from Shaoxing; Zhou Zuoren was his brother.'}},
+ {q:{zh:'「我」被掌櫃安排只做溫酒的工作，原因是？',en:'Why was "I" assigned only to warm wine?'},o:{zh:['年紀太大','掌櫃說他樣子太傻，怕侍候不了長衫主顧','他自己要求的','他會寫字'],en:['Too old','The shopkeeper thought he looked too dumb to serve gentry','He asked to','He could write']},a:1,e:{zh:'掌櫃說「樣子太傻，怕侍候不了長衫主顧」，又怕他羼水，只好讓他專管溫酒。',en:'He looked "too dumb" to serve the gentry and might water the wine, so he only warmed it.'}},
+ {q:{zh:'「孔乙己是這樣的使人快活，可是沒有他，別人也便這麼過。」這句話最能表現？',en:'"He made people happy, but without him everyone got on the same" shows…'},o:{zh:['孔乙己很受歡迎','孔乙己只是眾人的笑料，存在與否無人在乎','大家很想念他','酒店因他倒閉'],en:['He was popular','He was only a joke; no one cared if he existed','Everyone missed him','The tavern closed']},a:1,e:{zh:'他的價值只剩「使人快活」，一旦消失，生活照舊——冷漠至極。',en:'His only value was amusement; once gone, life went on — utter indifference.'}},
+ {q:{zh:'短衣幫與孔乙己同為社會底層，卻取笑他。這說明了什麼？',en:'Fellow poor labourers mock Kong. This shows…'},o:{zh:['底層彼此團結','弱者欺凌更弱者的麻木','孔乙己很受尊重','酒客都讀過書'],en:['Solidarity among the poor','The weak bullying the weaker','Kong is respected','The drinkers are educated']},a:1,e:{zh:'被壓迫者把更弱的人當作取樂對象，是魯迅批判的國民劣根性之一。',en:'The oppressed turn on the weaker — one of the national failings Lu Xun criticised.'}},
+ {q:{zh:'以下哪一項不是〈孔乙己〉運用的手法？',en:'Which technique is NOT used in "Kong Yiji"?'},o:{zh:['對比','反襯','白描','倒敘中穿插大量內心獨白'],en:['Contrast','Foil','Plain sketching','Extensive interior monologue']},a:3,e:{zh:'全文從不進入孔乙己內心，敘述者的內心描寫也極少，以外在白描為主。',en:'The story never enters Kong\'s mind and relies on external sketching.'}},
+ {q:{zh:'清末科舉制度廢除於哪一年？',en:'In what year were the imperial exams abolished?'},o:{zh:['1840年','1895年','1905年','1919年'],en:['1840','1895','1905','1919']},a:2,e:{zh:'1905 年清廷廢除科舉；1919 年發表的〈孔乙己〉回望這個制度下被犧牲的讀書人。',en:'The Qing abolished the exams in 1905; the 1919 story looks back at its victims.'}}
+];
+
+/* =========================================================
+   Portfolio logging
+   ========================================================= */
+const LOGI={visit:['👣','var(--skySoft)'],explore:['🔍','var(--goldSoft)'],practice:['✏️','var(--jadeSoft)'],quiz:['📝','var(--redSoft)'],step:['✅','var(--indigoSoft)'],note:['💭','var(--plumSoft)']};
+function log(type,zh,en,score){P.log.unshift({type,zh,en,score:score??null,t:new Date().toISOString()});if(P.log.length>400)P.log.length=400;saveP();updateProgress()}
+function markExplored(id,zh,en){if(!P.explored.includes(id)){P.explored.push(id);log('explore','探索：'+zh,'Explored: '+en)}else saveP();updateProgress();const b=$('#vtab-'+id);if(b)b.classList.add('seen')}
+function updateProgress(){const total=STEPS.length+6;const done=P.steps.length+Math.min(6,P.explored.length);$('#progBar').style.width=Math.round(done/total*100)+'%'}
+
+/* =========================================================
+   Toast & confetti
+   ========================================================= */
+let toastT;function toast(m){const el=$('#toast');el.textContent=m;el.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>el.classList.remove('show'),2200)}
+function confetti(n=60){const cs=['#e5484d','#f2a516','#0f9f7c','#1b9fd6','#4f5bd5','#b4469a'];for(let i=0;i<n;i++){const d=document.createElement('i');d.className='confetti';d.style.left=Math.random()*100+'vw';d.style.background=cs[i%cs.length];d.style.animationDuration=(1.8+Math.random()*1.8)+'s';d.style.animationDelay=Math.random()*.4+'s';d.style.borderRadius=Math.random()>.5?'50%':'2px';document.body.appendChild(d);setTimeout(()=>d.remove(),4200)}}
+
+/* =========================================================
+   Navigation
+   ========================================================= */
+let current='guide';
+function renderNav(){$('#nav').innerHTML=PAGES.map(p=>`<button data-p="${p}" ${p===current?'aria-current="page"':''}>${I[p]}<span>${t('nav.'+p)}</span></button>`).join('');
+ $$('#nav button').forEach(b=>b.onclick=()=>go(b.dataset.p))}
+function go(p,silent){if(!PAGES.includes(p))p='guide';current=p;$$('.page').forEach(s=>s.classList.toggle('active',s.id==='page-'+p));$$('#nav button').forEach(b=>b.toggleAttribute('aria-current',b.dataset.p===p));if(b2())b2().setAttribute('aria-current','page');
+ if(!silent){SFX.tab();try{history.replaceState(null,'','#'+p)}catch(e){}window.scrollTo({top:0,behavior:'smooth'})}
+ if(p==='portfolio')renderPortfolio()}
+const b2=()=>$(`#nav button[data-p="${current}"]`);
+
+/* =========================================================
+   PAGE: GUIDE
+   ========================================================= */
+function heroArt(){return `<svg class="hero-art" viewBox="0 0 400 320" aria-hidden="true">
+ <g class="steam" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round"><path d="M180 120c-14-18 14-30 0-50"/><path d="M215 120c-14-18 14-30 0-50"/><path d="M250 120c-14-18 14-30 0-50"/></g>
+ <ellipse cx="215" cy="150" rx="110" ry="26" fill="#fff6e3"/><path d="M105 150c6 70 50 110 110 110s104-40 110-110" fill="#fff"/><ellipse cx="215" cy="150" rx="96" ry="18" fill="#c97c2a"/>
+ <path d="M150 205h130" stroke="#e5484d" stroke-width="8" stroke-linecap="round"/><text x="215" y="240" text-anchor="middle" font-family="Noto Serif TC,serif" font-weight="900" font-size="30" fill="#e5484d">咸亨</text>
+ <ellipse cx="80" cy="280" rx="60" ry="14" fill="#fff6e3"/><g fill="#7a5a2a"><ellipse cx="60" cy="272" rx="11" ry="8"/><ellipse cx="82" cy="268" rx="11" ry="8"/><ellipse cx="102" cy="274" rx="11" ry="8"/><ellipse cx="72" cy="282" rx="11" ry="8"/><ellipse cx="94" cy="284" rx="11" ry="8"/></g></svg>`}
+function renderGuide(){
+ const el=$('#page-guide');
+ const beans=Array.from({length:9},(_,i)=>`<span class="bean" style="left:${8+i*10}%;top:${15+((i*37)%60)}%;animation-delay:${i*.5}s"></span>`).join('');
+ el.innerHTML=`
+ <div class="hero">${beans}${heroArt()}
+  <span class="kicker" style="background:#fff;color:#b9332f">${t('heroK')}</span>
+  <h1 style="margin-top:.6rem">${t('heroA')}<br><em>${t('heroB')}</em>${t('heroC')?'<br>'+t('heroC'):''}</h1>
+  <p>${t('heroP')}</p>
+  <div class="row"><button class="btn primary" data-go="explore">${t('toExplore')} ${I.arrow}</button><button class="btn" data-scroll="path">${t('start')}</button></div>
+ </div>
+
+ <div class="sec-head"><div><span class="kicker">🎯 ${S.lang==='zh'?'學習目標':'Goals'}</span><h2>${t('goals')}</h2></div></div>
+ <div class="grid g4">${GOALS.map((g,i)=>`<div class="card goal"><div class="num" style="background:${g.c}">${i+1}</div><div><h3 style="font-size:1.08rem">${L(g)[0]}</h3><p class="muted" style="font-size:.95rem">${L(g)[1]}</p></div></div>`).join('')}</div>
+
+ <div class="sec-head" id="path"><div><span class="kicker">🧭 ${S.lang==='zh'?'六步驟':'Six steps'}</span><h2>${t('path')}</h2><p class="lead">${t('pathTip')}</p></div></div>
+ <div class="path">${STEPS.map((s,i)=>`<div class="step ${P.steps.includes(s.id)?'done':''}" data-step="${s.id}">
+   <button class="dot" aria-label="完成" data-tick="${s.id}">${P.steps.includes(s.id)?'✓':i+1}</button>
+   <div><h4>${L(s)[0]} <span class="chip" style="font-size:.75rem">⏱ ${s.min} ${t('minutes')}</span></h4><small>${L(s)[1]}</small></div>
+   <button class="btn ghost" data-go="${s.p}" style="min-height:42px;padding:.3rem .8rem">${t('go')} ${I.arrow}</button></div>`).join('')}</div>
+
+ <div class="sec-head"><div><span class="kicker">✒️ ${S.lang==='zh'?'認識作者':'Author'}</span><h2>${t('author')}</h2></div></div>
+ <div class="grid g2">
+  <div class="card author"><div class="portrait-ph" aria-label="${S.lang==='zh'?'作者肖像（可替換為授權圖片）':'Author portrait placeholder'}">魯迅<br><small style="font-size:.6rem;font-family:var(--sans);color:var(--muted)">${S.lang==='zh'?'肖像':'portrait'}</small></div>
+   <dl class="facts">${S.lang==='zh'?`<dt>作者</dt><dd>魯迅（1881–1936），本名周樹人，浙江紹興人</dd><dt>地位</dt><dd>中國現代文學奠基者之一</dd><dt>發表</dt><dd>1919 年 4 月，刊於《新青年》</dd><dt>收錄</dt><dd>第一本小說集《吶喊》（1923）</dd><dt>文體</dt><dd>白話短篇小說，第一人稱回憶</dd>`:`<dt>Author</dt><dd>Lu Xun (1881–1936), born Zhou Shuren, Shaoxing</dd><dt>Status</dt><dd>A founder of modern Chinese literature</dd><dt>Published</dt><dd>April 1919, New Youth</dd><dt>Collected</dt><dd>Call to Arms (1923)</dd><dt>Form</dt><dd>Vernacular short story, first-person recollection</dd>`}</dl></div>
+  <div class="card"><h3 style="margin-bottom:.4rem">📜 ${t('bg')}</h3><p>${S.lang==='zh'?'故事發生在清朝末年的紹興魯鎮。當時讀書人的出路幾乎只有科舉；考不上功名、又不會營生的人，便在社會中進退失據。1905 年科舉廢除，1919 年五四新文化運動興起，魯迅以白話小說回望這群被制度與社會遺棄的人。':'Set in late-Qing Luzhen, near Shaoxing, when the civil exams were a scholar\'s only path. Those who failed and had no trade were stranded. The exams ended in 1905; amid the 1919 New Culture Movement, Lu Xun looked back at those the system and society abandoned.'}</p>
+   <div class="row" style="margin-top:.8rem"><span class="chip tag-red">1905 ${S.lang==='zh'?'廢科舉':'exams abolished'}</span><span class="chip tag-gold">1919 ${S.lang==='zh'?'五四運動':'May Fourth'}</span><span class="chip tag-jade">${S.lang==='zh'?'白話文學':'Vernacular lit.'}</span></div></div>
+ </div>
+
+ <div class="grid g2" style="margin-top:1rem">
+  <div class="card"><h3 style="margin-bottom:.5rem">🤔 ${t('before')}</h3><ol style="padding-left:1.3rem;display:grid;gap:.4rem">${L(BEFORE).map(q=>`<li>${q}</li>`).join('')}</ol></div>
+  <div class="card"><h3 style="margin-bottom:.6rem">🏷️ ${t('keywords')}</h3><div class="row">${L(KEYW).map((k,i)=>`<span class="chip ${['tag-red','tag-gold','tag-jade','tag-sky','tag-indigo','tag-plum'][i%6]}">${k}</span>`).join('')}</div></div>
+ </div>`;
+ $$('[data-go]',el).forEach(b=>b.onclick=()=>go(b.dataset.go));
+ $$('[data-scroll]',el).forEach(b=>b.onclick=()=>{SFX.click();const y=$('#'+b.dataset.scroll).getBoundingClientRect().top+window.scrollY-90;window.scrollTo({top:y,behavior:'smooth'})});
+ $$('[data-tick]',el).forEach(b=>b.onclick=()=>{const id=b.dataset.tick;const s=STEPS.find(x=>x.id===id);if(P.steps.includes(id)){P.steps=P.steps.filter(x=>x!==id);saveP();SFX.click()}else{P.steps.push(id);log('step','完成步驟：'+s.zh[0],'Completed step: '+s.en[0]);SFX.ok();if(P.steps.length===STEPS.length){confetti();SFX.win()}}renderGuide();updateProgress()});
+}
+
+/* =========================================================
+   PAGE: EXPLORE
+   ========================================================= */
+const VIZ=[
+ {id:'tavern',zh:'咸亨酒店空間圖',en:'Tavern map'},
+ {id:'decline',zh:'沉淪軌跡',en:'Path of decline'},
+ {id:'laugh',zh:'笑聲雷達',en:'Laughter radar'},
+ {id:'attitude',zh:'態度光譜',en:'Attitude spectrum'},
+ {id:'speech',zh:'之乎者也解碼',en:'Speech decoder'},
+ {id:'lens',zh:'敘事視角切換',en:'Viewpoint switch'}
+];
+let curViz='tavern', spot='kong', stage=0, laughSel=0, lensSel='kid', huiSel=0, showLine=false;
+function renderExplore(){
+ const el=$('#page-explore');
+ el.innerHTML=`<div class="sec-head" style="margin-top:.5rem"><div><span class="kicker">✨ ${t('exploreK')}</span><h2>${t('exploreT')}</h2><p class="lead">${t('exploreP')}</p></div></div>
+ <div class="tabs" role="tablist">${VIZ.map((v,i)=>`<button role="tab" id="vtab-${v.id}" class="${P.explored.includes(v.id)?'seen':''}" aria-selected="${v.id===curViz}" data-v="${v.id}"><span>${i+1}.</span>${L(v)}<span class="ck">✓</span></button>`).join('')}</div>
+ <div id="vizHost">${VIZ.map(v=>`<div class="viz ${v.id===curViz?'active':''}" id="viz-${v.id}"></div>`).join('')}</div>`;
+ $$('.tabs button',el).forEach(b=>b.onclick=()=>{curViz=b.dataset.v;SFX.tab();$$('.tabs button',el).forEach(x=>x.setAttribute('aria-selected',x===b));$$('.viz',el).forEach(x=>x.classList.toggle('active',x.id==='viz-'+curViz));});
+ renderTavern();renderDecline();renderLaugh();renderAttitude();renderSpeech();renderLens();
+}
+function vizHead(n,title,desc,c){return `<div class="row" style="margin-bottom:.8rem"><span class="tok" style="background:${c}">${n}</span><div><h3 style="font-size:1.3rem">${title}</h3><p class="muted" style="font-size:.95rem">${desc}</p></div></div>`}
+
+/* 1 Tavern */
+function renderTavern(){
+ const zh=S.lang==='zh';
+ const host=$('#viz-tavern');
+ const tokens=SPOTS.map(s=>{const r=ROLE[s.k];const big=s.k==='kong';return `<g transform="translate(${s.x} ${s.y})"><g class="hot ${spot===s.k?'on':''}" data-k="${s.k}" tabindex="0" role="button" aria-label="${L(r)}">
+  <circle class="ring" r="30" fill="none" stroke="${r.c}" stroke-width="4"/>
+  ${s.k==='ke'?`<circle cx="-34" cy="-6" r="20" fill="${r.c}" opacity=".7"/><circle cx="34" cy="10" r="20" fill="${r.c}" opacity=".7"/>`:''}
+  ${s.k==='gown'?`<circle cx="44" cy="22" r="20" fill="${r.c}" opacity=".7"/>`:''}
+  ${big?`<rect x="-26" y="-6" width="52" height="58" rx="18" fill="${r.c}" stroke="#2b2238" stroke-width="3"/>`:''}
+  <circle r="${big?28:25}" cy="${big?-14:0}" fill="${big?'#f4ead8':r.c}" stroke="#2b2238" stroke-width="3"/>
+  <text y="${big?-5:8}" text-anchor="middle" font-family="Noto Serif TC,serif" font-weight="900" font-size="${big?26:22}" fill="${big?'#2b2238':'#fff'}">${r.ch}</text>
+  <rect x="-44" y="${big?56:32}" width="88" height="26" rx="13" fill="#fff" stroke="#2b2238" stroke-width="2"/>
+  <text y="${big?74:50}" text-anchor="middle" font-size="14" font-weight="800" fill="#2b2238" font-family="Noto Sans TC,sans-serif">${zh?r.zh.replace('「我」',''):r.en}</text></g></g>`}).join('');
+ host.innerHTML=vizHead(1,zh?'咸亨酒店空間圖':'Map of the Xianheng Tavern',zh?'點選人物，看看每個人「站」在哪裡——空間就是身分。':'Tap each figure: where you stand reveals who you are.','var(--red)')+
+ `<div class="split"><div>
+  <svg class="stage-svg" viewBox="0 0 800 500" role="img" aria-label="${zh?'咸亨酒店平面示意圖':'Tavern diagram'}">
+   <defs><pattern id="tile" width="40" height="40" patternUnits="userSpaceOnUse"><rect width="40" height="40" fill="var(--floor)"/><path d="M0 40h40V0" fill="none" stroke="rgba(0,0,0,.08)" stroke-width="2"/></pattern></defs>
+   <rect width="800" height="430" fill="url(#tile)"/>
+   <rect x="0" y="0" width="800" height="70" fill="var(--wall)"/>
+   <rect x="560" y="40" width="212" height="205" rx="14" fill="var(--surface)" stroke="#2b2238" stroke-width="3"/>
+   <text x="666" y="72" text-anchor="middle" font-family="Noto Serif TC,serif" font-weight="900" font-size="20" fill="var(--ink)">${zh?'隔壁房子':'Inner room'}</text>
+   <rect x="610" y="170" width="110" height="46" rx="8" fill="var(--woodSoft)" stroke="#2b2238" stroke-width="2"/>
+   <g ${showLine?'':'opacity="0"'} style="transition:opacity .4s"><rect x="40" y="320" width="460" height="105" rx="18" fill="#4f5bd5" opacity=".18"/><rect x="548" y="28" width="236" height="230" rx="18" fill="#b4469a" opacity=".22"/>
+    <text x="60" y="345" font-size="16" font-weight="900" fill="#4f5bd5">${zh?'短衣幫：站著喝':'Short coats: stand'}</text><text x="566" y="282" font-size="16" font-weight="900" fill="#b4469a">${zh?'長衫：坐著喝':'Long gowns: sit'}</text>
+    <path d="M405 300 C 470 250, 520 200, 560 160" fill="none" stroke="#e5484d" stroke-width="4" stroke-dasharray="10 8"/><text x="440" y="250" font-size="15" font-weight="900" fill="#e5484d" transform="rotate(-36 440 250)">${zh?'渴望卻進不去':'longs to enter'}</text></g>
+   <path d="M90 262 H470 V118 H520 V312 H90 Z" fill="#9a6440" stroke="#2b2238" stroke-width="4" stroke-linejoin="round"/>
+   <path d="M90 262 H470 V118" fill="none" stroke="#c48a5f" stroke-width="6"/>
+   <text x="190" y="294" font-family="Noto Serif TC,serif" font-weight="900" font-size="20" fill="#fff">${zh?'曲尺形大櫃台':'L-shaped counter'}</text>
+   <g transform="translate(430 140)"><rect x="-18" y="0" width="36" height="44" rx="8" fill="#5a3b26"/><text y="30" text-anchor="middle" fill="#fff" font-size="13" font-weight="800">${zh?'熱水':'hot'}</text></g>
+   <g fill="#7a5130" stroke="#2b2238" stroke-width="2"><ellipse cx="110" cy="110" rx="22" ry="28"/><ellipse cx="160" cy="105" rx="22" ry="28"/></g>
+   <rect x="0" y="430" width="800" height="70" fill="#8d8d97"/><path d="M0 465 H800" stroke="#fff" stroke-width="3" stroke-dasharray="26 18" opacity=".6"/>
+   <text x="400" y="458" text-anchor="middle" font-weight="900" font-size="18" fill="#fff">${zh?'魯鎮街道（當街）':'Luzhen street'}</text>
+   <rect x="340" y="20" width="120" height="36" rx="6" fill="#e5484d" stroke="#2b2238" stroke-width="3"/><text x="400" y="45" text-anchor="middle" font-family="Noto Serif TC,serif" font-weight="900" font-size="20" fill="#fff">咸亨酒店</text>
+   ${tokens}
+  </svg>
+  <label class="toggle" style="margin-top:.8rem"><input type="checkbox" id="lineT" ${showLine?'checked':''}> ${zh?'顯示身分分區':'Show status zones'}</label>
+ </div><div class="card info" id="tavInfo"></div></div>`;
+ const info=()=>{const s=SPOTS.find(x=>x.k===spot),r=ROLE[spot],d=L(s);$('#tavInfo').innerHTML=`<h3><span class="tok" style="background:${r.c}">${r.ch}</span>${L(r)}</h3><p class="chip tag-gold" style="margin:.6rem 0">📍 ${d.pos}</p><p>${d.d}</p><p class="quote" style="margin-top:.8rem">${d.q}」</p>`};
+ info();
+ $$('.hot',host).forEach(g=>{const f=()=>{spot=g.dataset.k;SFX.pop();$$('.hot',host).forEach(x=>x.classList.toggle('on',x===g));info();markExplored('tavern','咸亨酒店空間圖','Tavern map')};g.onclick=f;g.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();f()}}});
+ $('#lineT').onchange=e=>{showLine=e.target.checked;SFX.click();renderTavern();markExplored('tavern','咸亨酒店空間圖','Tavern map')};
+}
+
+/* 2 Decline */
+function renderDecline(){
+ const zh=S.lang==='zh',host=$('#viz-decline'),s=STAGES[stage],d=L(s);
+ const fig=s.stand===1?`<rect x="70" y="60" width="60" height="120" rx="24" fill="#6f7f94" stroke="#2b2238" stroke-width="4"/><circle cx="100" cy="48" r="30" fill="#f4ead8" stroke="#2b2238" stroke-width="4"/><text x="100" y="58" text-anchor="middle" font-family="Noto Serif TC,serif" font-weight="900" font-size="28" fill="#2b2238">孔</text><text x="100" y="140" text-anchor="middle" fill="#fff" font-weight="800" font-size="15">${zh?'長衫':'gown'}</text>`
+ :s.stand===0?`<ellipse cx="100" cy="182" rx="60" ry="14" fill="#c9a46a" stroke="#2b2238" stroke-width="3"/><rect x="66" y="128" width="68" height="54" rx="20" fill="#8a7a62" stroke="#2b2238" stroke-width="4"/><circle cx="100" cy="110" r="28" fill="#e6dccb" stroke="#2b2238" stroke-width="4"/><text x="100" y="120" text-anchor="middle" font-family="Noto Serif TC,serif" font-weight="900" font-size="26" fill="#2b2238">孔</text><text x="100" y="206" text-anchor="middle" font-weight="800" font-size="13" fill="var(--muted)">${zh?'蒲包':'rush mat'}</text>`
+ :`<rect x="70" y="60" width="60" height="120" rx="24" fill="none" stroke="var(--muted)" stroke-width="3" stroke-dasharray="8 7"/><circle cx="100" cy="48" r="30" fill="none" stroke="var(--muted)" stroke-width="3" stroke-dasharray="8 7"/><text x="100" y="58" text-anchor="middle" font-family="Noto Serif TC,serif" font-weight="900" font-size="28" fill="var(--muted)" opacity=".5">？</text>`;
+ host.innerHTML=vizHead(2,zh?'孔乙己的沉淪軌跡':'Kong Yiji\'s path of decline',zh?'拖動滑桿，觀察他的衣著、姿態、金錢與尊嚴如何一步步崩落。':'Drag the slider to see his clothes, posture, money and dignity collapse.','var(--gold)')+
+ `<div class="split"><div class="card" style="text-align:center">
+   <svg viewBox="0 0 200 220" style="width:min(220px,60%);margin:0 auto;display:block;transition:all .5s">${fig}</svg>
+   <h3 style="font-size:1.5rem;margin-top:.3rem">${d.t}</h3><p class="chip tag-sky" style="margin:.3rem 0">🗓 ${d.when}</p>
+   <input type="range" min="0" max="${STAGES.length-1}" value="${stage}" id="stageR" aria-label="stage">
+   <div class="tl-steps">${STAGES.map((x,i)=>`<button class="${i===stage?'on':''}" data-s="${i}">${L(x).t}</button>`).join('')}</div>
+  </div><div class="card">
+   <div style="display:grid;gap:.7rem;margin-bottom:1rem">
+    <div><div class="row" style="justify-content:space-between"><b>${zh?'尊嚴':'Dignity'}</b><span>${s.dig}</span></div><div class="meter"><i style="width:${s.dig}%;background:var(--indigo)"></i></div></div>
+    <div><div class="row" style="justify-content:space-between"><b>${zh?'身體狀況':'Body'}</b><span>${s.body}</span></div><div class="meter"><i style="width:${s.body}%;background:var(--jade)"></i></div></div>
+    <div><div class="row" style="justify-content:space-between"><b>${zh?'周遭笑聲':'Laughter around him'}</b><span>${s.laugh}</span></div><div class="meter"><i style="width:${s.laugh}%;background:var(--red)"></i></div></div>
+    <small class="muted">${zh?'＊數值為教學示意，非原文數據。':'* Values are illustrative, not from the text.'}</small>
+   </div>
+   <div class="kv"><b>👘 ${zh?'衣著':'Dress'}</b><span>${d.dress}</span><b>🧍 ${zh?'姿態':'Posture'}</b><span>${d.pose}</span><b>🪙 ${zh?'金錢':'Money'}</b><span>${d.money}</span><b>👥 ${zh?'旁人':'Others'}</b><span>${d.others}</span></div>
+   <p class="quote" style="margin-top:.8rem">${d.line.replace(/^「|」$/g,'')}」</p>
+   <p style="margin-top:.6rem;font-weight:700;color:var(--red)">💡 ${d.note}</p>
+  </div></div>`;
+ const set=i=>{stage=+i;SFX.bowl();renderDecline();markExplored('decline','沉淪軌跡','Path of decline')};
+ $('#stageR').oninput=e=>set(e.target.value);
+ $$('.tl-steps button',host).forEach(b=>b.onclick=()=>set(b.dataset.s));
+}
+
+/* 3 Laughter */
+function renderLaugh(){
+ const zh=S.lang==='zh',host=$('#viz-laugh'),m=LAUGHS[laughSel];
+ host.innerHTML=vizHead(3,zh?'笑聲雷達':'Laughter radar',zh?'「笑」貫穿全文。點每一個場景，看是誰在笑、笑得多大聲——再想想，誰從來沒笑過？':'Laughter runs through the story. Tap each scene: who laughs, how loudly — and who never laughs?','var(--plum)')+
+ `<div class="split"><div class="laughs">${LAUGHS.map((x,i)=>`<button class="laugh ${i===laughSel?'on':''}" data-l="${i}"><span class="n">${i+1}</span><span><b>${L(x).t}</b><span class="who">${LAUGHERS.map(k=>`<span class="${x.who.includes(k)?'y':''}">${L(ROLE[k])}</span>`).join('')}</span></span></button>`).join('')}</div>
+ <div class="card"><h3 style="font-size:1.15rem">${L(m).t}</h3>
+  <div class="wave ${m.h?'go':''}" aria-hidden="true">${Array.from({length:22},(_,i)=>`<i style="height:${m.h?Math.max(6,m.h*(.35+.65*Math.abs(Math.sin(i*1.7+laughSel)))):4}%;animation-delay:${(i%5)*.08}s"></i>`).join('')}</div>
+  <p class="chip ${m.h?'tag-red':'tag-indigo'}">${m.h?(zh?'笑聲強度 ':'Intensity ')+m.h:(zh?'一片沉默':'Silence')}</p>
+  <p class="quote" style="margin-top:.8rem">${L(m).q}」</p><p style="margin-top:.7rem">${L(m).a}</p>
+  <p style="margin-top:.8rem;padding:.7rem;border-radius:12px;background:var(--goldSoft);font-weight:700">🤫 ${zh?'發現了嗎？孔乙己自己，從頭到尾沒有笑過。':'Notice: Kong Yiji himself never laughs once.'}</p>
+ </div></div>`;
+ $$('.laugh',host).forEach(b=>b.onclick=()=>{laughSel=+b.dataset.l;LAUGHS[laughSel].h?SFX.laugh():tone(180,.5,'sine',.08);renderLaugh();markExplored('laugh','笑聲雷達','Laughter radar')});
+}
+
+/* 4 Attitude spectrum (drag) */
+let attPos={}, attChecked=false;
+function renderAttitude(){
+ const zh=S.lang==='zh',host=$('#viz-attitude');
+ host.innerHTML=vizHead(4,zh?'人物態度光譜':'Attitude spectrum',zh?'把每個人物拖到光譜上：他們對孔乙己的態度，是殘暴、冷漠，還是同情？放好後按「對照分析」。':'Drag each figure onto the spectrum — cruel, indifferent, or sympathetic? Then press "Compare".','var(--jade)')+
+ `<div class="card"><div class="spectrum" id="spec">
+   <span class="lbl" style="left:0">${zh?'⬅ 殘暴・敵意':'⬅ Cruel'}</span><span class="lbl" style="left:40%">${zh?'冷漠・取樂':'Indifferent'}</span><span class="lbl" style="right:0">${zh?'同情・尊重 ➡':'Sympathetic ➡'}</span>
+  </div>
+  <div class="tray" id="tray"></div>
+  <div class="row" style="margin-top:1rem"><button class="btn jade" id="attCheck">${zh?'對照分析':'Compare'}</button><button class="btn ghost" id="attReset">${I.redo} ${t('restart')}</button></div>
+  <div id="attOut" style="margin-top:1rem"></div></div>`;
+ const spec=$('#spec'),tray=$('#tray');
+ const TOPS=[32,68,32,68,50];
+ ATT.forEach((a,ai)=>{const r=ROLE[a.k];const m=document.createElement('div');m.className='marker';m.style.background=r.c;m.textContent=r.ch;m.title=L(r);m.dataset.k=a.k;m.setAttribute('aria-label',L(r));
+  if(attPos[a.k]!=null){m.style.left=attPos[a.k]+'%';m.style.top=TOPS[ai]+'%';spec.appendChild(m)}else tray.appendChild(m);
+  m.addEventListener('pointerdown',e=>{e.preventDefault();m.classList.add('drag');SFX.click();
+   const move=ev=>{ev.preventDefault();const sr=spec.getBoundingClientRect();if(m.parentElement!==spec){spec.appendChild(m)}let x=(ev.clientX-sr.left)/sr.width*100;x=Math.max(3,Math.min(97,x));m.style.left=x+'%';m.style.top=TOPS[ai]+'%';attPos[a.k]=x};
+   const up=ev=>{m.classList.remove('drag');window.removeEventListener('pointermove',move);window.removeEventListener('pointerup',up);window.removeEventListener('pointercancel',up);const sr=spec.getBoundingClientRect();if(ev.clientY<sr.top-60||ev.clientY>sr.bottom+60){delete attPos[a.k];tray.appendChild(m);m.style.left='';m.style.top=''}else tone(500+(attPos[a.k]||0)*4,.08,'triangle',.12)};
+   window.addEventListener('pointermove',move,{passive:false});window.addEventListener('pointerup',up);window.addEventListener('pointercancel',up);move(e)});
+  m.tabIndex=0;m.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'||e.key==='ArrowRight'){if(m.parentElement!==spec)spec.appendChild(m);attPos[a.k]=Math.max(3,Math.min(97,(attPos[a.k]??50)+(e.key==='ArrowLeft'?-4:4)));m.style.left=attPos[a.k]+'%';e.preventDefault()}});
+ });
+ if(attChecked)showAttRef();
+ $('#attCheck').onclick=()=>{if(Object.keys(attPos).length<ATT.length){toast(zh?'請先把五個人物都放上光譜':'Place all five figures first');SFX.bad();return}attChecked=true;showAttRef();SFX.ok();markExplored('attitude','態度光譜','Attitude spectrum')};
+ $('#attReset').onclick=()=>{attPos={};attChecked=false;SFX.click();renderAttitude()};
+}
+function showAttRef(){const zh=S.lang==='zh',spec=$('#spec');$$('.marker.ref',spec).forEach(x=>x.remove());let tot=0;
+ ATT.forEach(a=>{const r=document.createElement('div');r.className='marker ref';r.style.left=a.ref+'%';r.style.background=ROLE[a.k].c;spec.appendChild(r);tot+=Math.abs((attPos[a.k]??50)-a.ref)});
+ const avg=tot/ATT.length;
+ $('#attOut').innerHTML=`<p class="fb ${avg<15?'ok':'bad'}" style="margin-top:0">${avg<15?(zh?'你的判斷與文本分析很接近！':'Very close to the textual reading!'):(zh?'有些位置和文本分析不同，看看下方的證據：':'Some positions differ — check the evidence below:')} <small>（${zh?'平均差距':'avg gap'} ${avg.toFixed(0)}）</small></p>
+ <p style="margin:.6rem 0;font-weight:700">${zh?'上方小圓點＝參考位置。注意：光譜右半邊，一個人都沒有——全篇沒有人真正同情孔乙己。':'Small dots = reference positions. Note the right half is empty — no one truly sympathises with Kong.'}</p>
+ <div class="grid g2">${ATT.map(a=>`<div class="row" style="align-items:flex-start;flex-wrap:nowrap"><span class="tok" style="background:${ROLE[a.k].c}">${ROLE[a.k].ch}</span><div><b>${L(ROLE[a.k])}</b><p class="muted" style="font-size:.93rem">${L(a)}</p></div></div>`).join('')}</div>`}
+
+/* 5 Speech decoder + trace */
+function renderSpeech(){
+ const zh=S.lang==='zh',host=$('#viz-speech');
+ host.innerHTML=vizHead(5,zh?'之乎者也解碼器':'Classical speech decoder',zh?'翻開卡片，看孔乙己的「文言腔」背後藏著什麼。再試著臨摹一下他得意的「回」字。':'Flip the cards to decode Kong\'s classical speech, then trace his beloved 回.','var(--indigo)')+
+ `<div class="flips">${FLIPS.map((f,i)=>`<div class="flip" data-f="${i}" tabindex="0" role="button"><div class="flip-in"><div class="flip-f">「${L(f).f.replace(/^"|"$/g,'')}」<small>${zh?'點我翻面':'Tap to flip'} ↻</small></div><div class="flip-b"><b>${L(f).b}</b>${L(f).d}</div></div></div>`).join('')}</div>
+ <div class="card" style="margin-top:1.2rem"><div class="split" style="align-items:center"><div>
+  <h3>✍️ ${zh?'「回」字有四樣寫法？':'Four ways to write 回?'}</h3>
+  <p style="margin:.4rem 0">${zh?'「回」與異體字「囘」「囬」等，傳統上說法不一。孔乙己以此為傲，但這樣的學問，在咸亨酒店裡沒有任何人需要。選一個字，用手指或滑鼠描描看。':'回 has variant forms such as 囘 and 囬 (accounts of the "four" differ). Kong is proud of this, yet no one in the tavern needs it. Pick one and trace it.'}</p>
+  <div class="hui-pick">${HUI.map((h,i)=>`<button data-h="${i}" class="${i===huiSel?'on':''}">${h}</button>`).join('')}</div>
+  <div class="row" style="margin-top:.8rem"><button class="btn ghost" id="clr">${I.redo} ${zh?'清除':'Clear'}</button></div>
+ </div><div style="display:grid;place-items:center"><div class="trace-wrap"><div class="ghost" id="ghost">${HUI[huiSel]}</div><canvas id="trace"></canvas></div></div></div></div>`;
+ $$('.flip',host).forEach(c=>{const f=()=>{c.classList.toggle('on');SFX.flip();markExplored('speech','之乎者也解碼','Speech decoder')};c.onclick=f;c.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();f()}}});
+ $$('.hui-pick button',host).forEach(b=>b.onclick=()=>{huiSel=+b.dataset.h;SFX.click();$$('.hui-pick button',host).forEach(x=>x.classList.toggle('on',x===b));$('#ghost').textContent=HUI[huiSel];clear()});
+ const cv=$('#trace'),ctx=cv.getContext('2d');let drawing=false,strokes=0;
+ const fit=()=>{const r=cv.getBoundingClientRect();const dpr=window.devicePixelRatio||1;cv.width=r.width*dpr;cv.height=r.height*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);ctx.lineCap='round';ctx.lineJoin='round';ctx.lineWidth=Math.max(8,r.width/26);ctx.strokeStyle='#e5484d'};
+ const clear=()=>{fit();strokes=0};
+ requestAnimationFrame(fit);
+ const pt=e=>{const r=cv.getBoundingClientRect();return[e.clientX-r.left,e.clientY-r.top]};
+ cv.addEventListener('pointerdown',e=>{if(!cv.width)fit();drawing=true;cv.setPointerCapture(e.pointerId);const[x,y]=pt(e);ctx.beginPath();ctx.moveTo(x,y);tone(700,.04,'triangle',.06)});
+ cv.addEventListener('pointermove',e=>{if(!drawing)return;const[x,y]=pt(e);ctx.lineTo(x,y);ctx.stroke()});
+ const end=()=>{if(drawing){drawing=false;strokes++;if(strokes===6){SFX.ok();toast(zh?'寫得好！但孔乙己的學問，誰需要呢？':'Nicely done! But who needs Kong\'s learning?');markExplored('speech','之乎者也解碼','Speech decoder')}}};
+ cv.addEventListener('pointerup',end);cv.addEventListener('pointercancel',end);
+ $('#clr').onclick=()=>{SFX.click();clear()};
+}
+
+/* 6 Lens */
+function renderLens(){
+ const zh=S.lang==='zh',host=$('#viz-lens'),l=LENSES.find(x=>x.k===lensSel),d=L(l);
+ host.innerHTML=vizHead(6,zh?'敘事視角切換器':'Viewpoint switcher',zh?'同一個場景（孔乙己問「我」讀過書沒有），換一雙眼睛看，感受完全不同。':'One scene — Kong asks "me" if I\'ve studied — seen through four different eyes.','var(--sky)')+
+ `<div class="lens">${LENSES.map(x=>`<button data-l="${x.k}" class="${x.k===lensSel?'on':''}">${L(x).t}<small>${L(x).s}</small></button>`).join('')}</div>
+ <div class="lens-view" style="background:${l.bg}">${d.lines.map((s,i)=>`<p class="scene-line" style="animation-delay:${i*.18}s;animation-fill-mode:both">${s}</p>`).join('')}
+  <p style="margin-top:1rem;padding-top:.8rem;border-top:2px dashed rgba(0,0,0,.15);font-weight:600">🔎 ${d.a}</p></div>`;
+ $$('.lens button',host).forEach(b=>b.onclick=()=>{lensSel=b.dataset.l;SFX.tab();renderLens();markExplored('lens','敘事視角切換','Viewpoint switch')});
+}
+
+/* =========================================================
+   PAGE: EXTEND
+   ========================================================= */
+let rungSel=3;
+function renderExtend(){
+ const zh=S.lang==='zh',el=$('#page-extend'),r=LADDER[rungSel],rd=L(r);
+ el.innerHTML=`<div class="sec-head" style="margin-top:.5rem"><div><span class="kicker">🚀 ${t('extendK')}</span><h2>${t('extendT')}</h2><p class="lead">${t('extendP')}</p></div></div>
+ <div class="card"><h3 style="font-size:1.3rem;margin-bottom:.3rem">🪜 ${zh?'科舉階梯：孔乙己卡在哪裡？':'The exam ladder: where is Kong stuck?'}</h3><p class="muted" style="margin-bottom:1rem">${zh?'點選每一階，看看科舉的層級，以及小說人物所在的位置。':'Tap each rung to see the levels and where characters stand.'}</p>
+  <div class="split"><div class="ladder">${LADDER.map((x,i)=>`<button class="rung ${i===rungSel?'on':''}" data-r="${i}"><span class="lv" style="background:${x.c}">${x.lv}</span><span><b>${L(x).n}</b><br><small class="muted">${L(x).e}</small></span>${L(x).who?`<span class="who-here">${L(x).who}</span>`:'<span></span>'}</button>`).join('')}</div>
+  <div class="card" style="background:var(--surface2)"><span class="tok" style="background:${r.c};width:64px;height:64px;font-size:1.7rem">${r.lv}</span><h3 style="font-size:1.4rem;margin-top:.5rem">${rd.n}</h3><p class="chip tag-indigo" style="margin:.4rem 0">${rd.e}</p><p>${rd.d}</p>
+   ${rungSel===3?`<p style="margin-top:.8rem;font-weight:700;color:var(--red)">${zh?'孔乙己「終於沒有進學」——在這套制度裡，他的一生只剩下「讀過書」這個身分。':'Kong "never entered the academy" — in this system, "having studied" is all he has left.'}</p>`:''}
+   ${rungSel===1?`<p style="margin-top:.8rem;font-weight:700;color:var(--red)">${zh?'同樣出身讀書人，舉人可以打斷童生的腿而無人過問——這就是階層的距離。':'A juren can break a tongsheng\'s legs with impunity — that is the distance between rungs.'}</p>`:''}
+  </div></div></div>
+
+ <div class="sec-head"><div><span class="kicker">👀 ${zh?'看客系譜':'Onlookers'}</span><h2>${zh?'魯迅筆下的「看客」與對讀':'Lu Xun\'s onlookers & paired readings'}</h2></div></div>
+ <div class="grid g3">${EXT.map(x=>`<div class="card ext-card"><div class="top"><span class="ext-ico" style="background:${x.c}">${x.ico}</span><h3 style="font-size:1.1rem">${L(x).t}</h3></div><p style="font-size:.97rem">${L(x).d}</p><span class="chip" style="align-self:flex-start">${L(x).k}</span></div>`).join('')}</div>
+
+ <div class="sec-head"><div><span class="kicker">🖋️ ${zh?'寫作手法':'Craft'}</span><h2>${zh?'寫作手法精析':'Techniques up close'}</h2></div></div>
+ <div style="display:grid;gap:.6rem">${TECH.map((x,i)=>`<details class="acc" ${i===0?'open':''}><summary>${L(x)[0]}</summary><div>${L(x)[1]}</div></details>`).join('')}</div>
+
+ <div class="sec-head"><div><span class="kicker">🔬 ${zh?'探究任務':'Inquiry'}</span><h2>${zh?'延伸探究任務':'Inquiry tasks'}</h2><p class="lead">${zh?'選一題寫下想法，按「存入學習歷程」就會被記錄。':'Pick one, write your thoughts and save to your portfolio.'}</p></div></div>
+ <div class="card"><div class="field"><label for="inqSel">${zh?'選擇題目':'Choose a prompt'}</label><select id="inqSel" style="padding:.7rem;border-radius:12px;border:2px solid var(--line);background:var(--surface2);min-height:48px">${L(INQ).map((q,i)=>`<option value="${i}">${i+1}. ${q}</option>`).join('')}</select></div>
+  <div class="field" style="margin-top:.8rem"><label for="inqTxt">${zh?'我的想法':'My response'}</label><textarea id="inqTxt" rows="4" placeholder="${zh?'寫下你的想法……':'Write here…'}"></textarea></div>
+  <div class="row" style="margin-top:.8rem"><button class="btn indigo" id="inqSave">💾 ${zh?'存入學習歷程':'Save to portfolio'}</button></div></div>
+
+ <div class="sec-head"><div><span class="kicker">📚 ${zh?'書單':'Reading'}</span><h2>${zh?'延伸閱讀':'Further reading'}</h2></div></div>
+ <div class="grid g4">${(zh?[['《吶喊》','魯迅','〈狂人日記〉〈故鄉〉〈阿Q正傳〉皆收錄其中'],['《徬徨》','魯迅','〈祝福〉〈在酒樓上〉'],['《朝花夕拾》','魯迅','散文回憶，含〈藤野先生〉'],['《儒林外史》','吳敬梓','清代諷刺科舉的長篇小說']]:[['Call to Arms','Lu Xun','Includes "A Madman\'s Diary", "My Old Home", "Ah Q"'],['Wandering','Lu Xun','"The New Year\'s Sacrifice", "In the Tavern"'],['Dawn Blossoms Plucked at Dusk','Lu Xun','Memoir essays incl. "Mr Fujino"'],['The Scholars','Wu Jingzi','Qing satire of the exam system']]).map((b,i)=>`<div class="card" style="border-top:8px solid ${['var(--red)','var(--gold)','var(--jade)','var(--indigo)'][i]}"><h3 style="font-size:1.1rem">${b[0]}</h3><p class="chip" style="margin:.3rem 0">${b[1]}</p><p class="muted" style="font-size:.92rem">${b[2]}</p></div>`).join('')}</div>`;
+ $$('.rung',el).forEach(b=>b.onclick=()=>{rungSel=+b.dataset.r;tone(400+(3-rungSel)*150,.12,'triangle',.15);renderExtend()});
+ $('#inqSave').onclick=()=>{const v=$('#inqTxt').value.trim();if(!v){toast(zh?'先寫下一些想法吧':'Write something first');SFX.bad();return}const qi=+$('#inqSel').value;log('note','探究：'+INQ.zh[qi]+'｜'+v,'Inquiry: '+INQ.en[qi]+' | '+v);$('#inqTxt').value='';SFX.ok();toast(zh?'已存入學習歷程 🌱':'Saved to portfolio 🌱')};
+}
+
+/* =========================================================
+   PAGE: PRACTICE
+   ========================================================= */
+const MODES=[
+ {id:'order',ico:'🔢',c:'var(--goldSoft)',zh:['情節排序','把七個事件排回正確順序'],en:['Plot order','Put seven events in order']},
+ {id:'who',ico:'🗣️',c:'var(--redSoft)',zh:['誰說的？','判斷 8 句引文的說話人'],en:['Who said it?','Identify 8 speakers']},
+ {id:'cards',ico:'🃏',c:'var(--indigoSoft)',zh:['字詞閃卡','翻卡複習 14 個詞語'],en:['Flashcards','Review 14 terms']},
+ {id:'cloze',ico:'🧩',c:'var(--jadeSoft)',zh:['名句填空','補上經典句子的關鍵字'],en:['Cloze','Fill in key quotes']}
+];
+let pMode='order',pState=null;
+function renderPractice(){
+ const el=$('#page-practice');
+ el.innerHTML=`<div class="sec-head" style="margin-top:.5rem"><div><span class="kicker">🔁 ${t('practiceK')}</span><h2>${t('practiceT')}</h2><p class="lead">${t('practiceP')}</p></div></div>
+ <div class="modes">${MODES.map(m=>`<button class="mode ${m.id===pMode?'on':''}" data-m="${m.id}"><span class="ext-ico" style="background:${m.c}">${m.ico}</span><b>${L(m)[0]}</b><small>${L(m)[1]}</small></button>`).join('')}</div>
+ <div class="card arena" id="arena"></div>`;
+ $$('.mode',el).forEach(b=>b.onclick=()=>{pMode=b.dataset.m;SFX.tab();pState=null;renderPractice()});
+ ({order:pOrder,who:pWho,cards:pCards,cloze:pCloze})[pMode]();
+}
+function recordPractice(zh,en,score){P.practice.push({m:pMode,score,t:new Date().toISOString()});log('practice',zh,en,score)}
+function doneBox(score,total,zh,en){const pct=Math.round(score/total*100);if(pct>=80){SFX.win();confetti(40)}else SFX.ok();
+ return `<div class="result"><div class="big-score">${score}/${total}</div><p style="font-weight:800;margin:.5rem 0">${pct>=80?(S.lang==='zh'?'太棒了！':'Excellent!'):pct>=50?(S.lang==='zh'?'不錯，再練一次會更熟！':'Good — once more!'):(S.lang==='zh'?'回到互動探索複習一下吧！':'Review in Explore and try again!')}</p><button class="btn primary" id="pAgain">${I.redo} ${t('again')}</button></div>`}
+function pOrder(){
+ const zh=S.lang==='zh',ar=$('#arena');
+ if(!pState)pState={order:shuffle(PLOT.map((_,i)=>i)),checked:false};
+ const st=pState;
+ ar.innerHTML=`<h3>🔢 ${zh?'用 ▲ ▼ 調整順序，排出故事的發展':'Use ▲ ▼ to order the events'}</h3>
+ <div class="sortlist">${st.order.map((p,i)=>`<div class="sortitem ${st.checked?(p===i?'ok':'bad'):''}"><span class="idx">${i+1}</span><span>${L(PLOT[p])}</span><span class="mv"><button data-u="${i}" aria-label="up" ${i===0||st.checked?'disabled':''}>▲</button><button data-d="${i}" aria-label="down" ${i===st.order.length-1||st.checked?'disabled':''}>▼</button></span></div>`).join('')}</div>
+ ${st.checked?'<div id="pDone"></div>':`<button class="btn jade" id="pCheck">${t('check')}</button>`}`;
+ $$('[data-u]',ar).forEach(b=>b.onclick=()=>{const i=+b.dataset.u;[st.order[i-1],st.order[i]]=[st.order[i],st.order[i-1]];SFX.click();pOrder()});
+ $$('[data-d]',ar).forEach(b=>b.onclick=()=>{const i=+b.dataset.d;[st.order[i+1],st.order[i]]=[st.order[i],st.order[i+1]];SFX.click();pOrder()});
+ if(!st.checked)$('#pCheck').onclick=()=>{st.checked=true;const sc=st.order.filter((p,i)=>p===i).length;recordPractice('練習：情節排序','Practice: plot order',Math.round(sc/PLOT.length*100));pOrder();$('#pDone').innerHTML=doneBox(sc,PLOT.length);$('#pAgain').onclick=()=>{pState=null;pOrder()}};
+}
+function pWho(){
+ const zh=S.lang==='zh',ar=$('#arena');
+ if(!pState)pState={qs:shuffle(QUOTES).slice(0,8),i:0,score:0,ans:null,res:[]};
+ const st=pState;
+ if(st.i>=st.qs.length){ar.innerHTML=doneBox(st.score,st.qs.length);$('#pAgain').onclick=()=>{pState=null;pWho()};return}
+ const q=st.qs[st.i],opts=['kong','zhang','ke','wo'];
+ ar.innerHTML=`<div class="qtop"><span class="chip">🗣️ ${zh?'第':'Q'} ${st.i+1} / ${st.qs.length}</span><div class="dots">${st.qs.map((_,i)=>`<i class="${i<st.i?(st.res[i]?'ok':'bad'):i===st.i?'cur':''}"></i>`).join('')}</div></div>
+ <p class="qbox">「${L(q[1])}」</p>
+ <div class="opts">${opts.map((k,i)=>`<button class="opt" data-k="${k}"><span class="k" style="background:${ROLE[k].c};color:#fff">${ROLE[k].ch}</span>${L(ROLE[k])}</button>`).join('')}</div><div id="pfb"></div>`;
+ $$('.opt',ar).forEach(b=>b.onclick=()=>{if(st.ans)return;st.ans=b.dataset.k;const ok=st.ans===q[0];st.res.push(ok);if(ok){st.score++;SFX.ok();b.classList.add('ok')}else{SFX.bad();b.classList.add('bad');$(`.opt[data-k="${q[0]}"]`,ar).classList.add('ok')}$$('.opt',ar).forEach(x=>x.disabled=true);
+  $('#pfb').innerHTML=`<div class="fb ${ok?'ok':'bad'}">${ok?t('correct'):t('wrong')+' — '+t('answerIs')+L(ROLE[q[0]])}</div><div class="row" style="margin-top:.8rem"><button class="btn primary" id="pNext">${t('next')} ${I.arrow}</button></div>`;
+  $('#pNext').onclick=()=>{st.i++;st.ans=null;if(st.i>=st.qs.length)recordPractice('練習：誰說的？','Practice: who said it?',Math.round(st.score/st.qs.length*100));pWho()}});
+}
+function pCards(){
+ const zh=S.lang==='zh',ar=$('#arena');
+ if(!pState)pState={deck:shuffle(VOCAB),i:0,known:0,again:[]};
+ const st=pState;
+ if(st.i>=st.deck.length){
+  if(st.again.length){ar.innerHTML=`<div class="result"><div class="big-score">${st.known}/${st.known+st.again.length}</div><p style="margin:.5rem 0;font-weight:700">${zh?'還有 '+st.again.length+' 張要再複習':st.again.length+' cards to review again'}</p><div class="row" style="justify-content:center"><button class="btn primary" id="cAgain">${zh?'複習不熟的卡':'Review missed'}</button><button class="btn ghost" id="pAgain">${I.redo} ${t('restart')}</button></div></div>`;
+   $('#cAgain').onclick=()=>{st.deck=shuffle(st.again);st.again=[];st.i=0;SFX.click();pCards()}}
+  else{ar.innerHTML=doneBox(st.known,st.known)}
+  if(!st.logged){st.logged=1;recordPractice('練習：字詞閃卡','Practice: flashcards',Math.round(st.known/VOCAB.length*100))}
+  $('#pAgain').onclick=()=>{pState=null;pCards()};return}
+ const c=st.deck[st.i];
+ ar.innerHTML=`<div class="qtop"><span class="chip">🃏 ${st.i+1} / ${st.deck.length}</span><span class="chip tag-jade">✓ ${st.known}</span></div>
+ <div class="flip fc" id="fc" tabindex="0" role="button"><div class="flip-in"><div class="flip-f">${c.w}<small>${zh?'點卡片看解釋':'Tap to see meaning'} ↻</small></div><div class="flip-b" style="font-size:1.1rem"><b style="font-size:1.5rem">${c.w}</b>${L(c)}</div></div></div>
+ <div class="row" style="justify-content:center"><button class="btn ghost" id="cNo">😵 ${zh?'再複習':'Again'}</button><button class="btn jade" id="cYes">😎 ${zh?'我會了':'Got it'}</button></div>`;
+ const fc=$('#fc');fc.onclick=()=>{fc.classList.toggle('on');SFX.flip()};fc.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();fc.click()}};
+ $('#cYes').onclick=()=>{st.known++;st.i++;SFX.ok();pCards()};
+ $('#cNo').onclick=()=>{st.again.push(c);st.i++;SFX.click();pCards()};
+}
+function pCloze(){
+ const zh=S.lang==='zh',ar=$('#arena');
+ if(!pState)pState={qs:shuffle(CLOZE).slice(0,6).map(q=>({q,ord:shuffle([0,1,2,3])})),i:0,score:0,ans:null,res:[]};
+ const st=pState;
+ if(st.i>=st.qs.length){ar.innerHTML=doneBox(st.score,st.qs.length);$('#pAgain').onclick=()=>{pState=null;pCloze()};return}
+ const {q,ord}=st.qs[st.i];
+ ar.innerHTML=`<div class="qtop"><span class="chip">🧩 ${st.i+1} / ${st.qs.length}</span><div class="dots">${st.qs.map((_,i)=>`<i class="${i<st.i?(st.res[i]?'ok':'bad'):i===st.i?'cur':''}"></i>`).join('')}</div></div>
+ <p class="qbox">${L(q.s).replace(/＿＿/g,'<span style="display:inline-block;min-width:3em;border-bottom:3px solid var(--red);color:var(--red)" class="blank">　</span>')}</p>
+ <div class="opts">${ord.map((oi,n)=>`<button class="opt" data-o="${oi}"><span class="k">${'ABCD'[n]}</span>${L(q.o)[oi]}</button>`).join('')}</div><div id="pfb"></div>`;
+ $$('.opt',ar).forEach(b=>b.onclick=()=>{if(st.ans!=null)return;st.ans=+b.dataset.o;const ok=st.ans===q.a;st.res.push(ok);$$('.blank',ar).forEach(x=>x.textContent=L(q.o)[q.a]);if(ok){st.score++;SFX.ok();b.classList.add('ok')}else{SFX.bad();b.classList.add('bad');$(`.opt[data-o="${q.a}"]`,ar).classList.add('ok')}$$('.opt',ar).forEach(x=>x.disabled=true);
+  $('#pfb').innerHTML=`<div class="fb ${ok?'ok':'bad'}">${ok?t('correct'):t('wrong')}</div><div class="row" style="margin-top:.8rem"><button class="btn primary" id="pNext">${t('next')} ${I.arrow}</button></div>`;
+  $('#pNext').onclick=()=>{st.i++;st.ans=null;if(st.i>=st.qs.length)recordPractice('練習：名句填空','Practice: cloze',Math.round(st.score/st.qs.length*100));pCloze()}});
+}
+
+/* =========================================================
+   PAGE: QUIZ
+   ========================================================= */
+let Q=null;
+function renderQuiz(){
+ const zh=S.lang==='zh',el=$('#page-quiz');
+ const best=P.quizzes.length?Math.max(...P.quizzes.map(x=>x.score)):null;
+ el.innerHTML=`<div class="sec-head" style="margin-top:.5rem"><div><span class="kicker">🏁 ${t('quizK')}</span><h2>${t('quizT')}</h2><p class="lead">${t('quizP')}</p></div></div><div class="card arena" id="qArena"></div>`;
+ const ar=$('#qArena');
+ if(!Q){ar.innerHTML=`<div class="result"><div class="badge"><span>📝</span></div><h3 style="font-size:1.5rem">${zh?'準備好了嗎？':'Ready?'}</h3>
+  <div class="row" style="justify-content:center;margin:.8rem 0"><span class="chip tag-red">${zh?'10 題':'10 questions'}</span><span class="chip tag-gold">${zh?'題庫 '+QB.length+' 題隨機':'Random from '+QB.length}</span><span class="chip tag-jade">${zh?'每題 10 分':'10 pts each'}</span>${best!=null?`<span class="chip tag-indigo">${zh?'最高分 ':'Best '}${best}</span>`:''}</div>
+  <button class="btn primary" id="qStart" style="font-size:1.1rem">${t('startQuiz')} ${I.arrow}</button></div>`;
+  $('#qStart').onclick=()=>{Q={qs:shuffle(QB).slice(0,10).map(q=>({q,ord:shuffle(q.o.zh.map((_,i)=>i))})),i:0,ans:[],start:Date.now()};SFX.tab();renderQuiz()};return}
+ if(Q.i>=Q.qs.length){
+  const sc=Q.ans.filter((a,i)=>a===Q.qs[i].q.a).length*10;
+  if(!Q.saved){Q.saved=1;const sec=Math.round((Date.now()-Q.start)/1000);P.quizzes.push({score:sc,sec,t:new Date().toISOString()});log('quiz',`單元測驗：${sc} 分（${sec} 秒）`,`Unit quiz: ${sc} pts (${sec}s)`,sc);if(sc>=80){SFX.win();confetti(90)}else SFX.ok()}
+  ar.innerHTML=`<div class="result"><div class="badge"><span>${sc>=90?'🏆':sc>=80?'🥇':sc>=60?'🥈':'📖'}</span></div><div class="big-score">${sc}</div><p style="font-weight:800;margin:.4rem 0 1rem">${sc>=80?(zh?'精熟！你已經讀懂〈孔乙己〉了。':'Mastery! You\'ve understood "Kong Yiji".'):sc>=60?(zh?'及格！看看解析，補強不熟的部分。':'Pass! Check the explanations.'):(zh?'再回互動探索與練習區複習一下吧。':'Revisit Explore and Practice.')}</p>
+  <div class="row" style="justify-content:center"><button class="btn primary" id="qRe">${I.redo} ${t('restart')}</button><button class="btn ghost" id="qPf">${zh?'查看學習歷程':'View portfolio'}</button></div>
+  <h3 style="text-align:left;margin-top:1.5rem">${zh?'解析回顧':'Review'}</h3>
+  <div class="review">${Q.qs.map(({q},i)=>{const ok=Q.ans[i]===q.a;return `<div class="it ${ok?'ok':'bad'}"><b>${ok?'✅':'❌'} ${i+1}. ${L(q.q)}</b><p style="margin-top:.3rem">${zh?'你的答案：':'Yours: '}${L(q.o)[Q.ans[i]]}${ok?'':`　|　${t('answerIs')}<b style="color:var(--jade)">${L(q.o)[q.a]}</b>`}</p><p class="muted" style="font-size:.93rem">💡 ${L(q.e)}</p></div>`}).join('')}</div></div>`;
+  $('#qRe').onclick=()=>{Q=null;SFX.click();renderQuiz()};$('#qPf').onclick=()=>go('portfolio');return}
+ const {q,ord}=Q.qs[Q.i],answered=Q.ans[Q.i]!=null;
+ ar.innerHTML=`<div class="qtop"><span class="chip tag-red">📝 ${zh?'第':'Q'} ${Q.i+1} / ${Q.qs.length}</span><div class="dots">${Q.qs.map((x,i)=>`<i class="${i<Q.i?(Q.ans[i]===x.q.a?'ok':'bad'):i===Q.i?'cur':''}"></i>`).join('')}</div></div>
+ <div class="meter" style="margin-top:.8rem"><i style="width:${Q.i/Q.qs.length*100}%;background:linear-gradient(90deg,var(--red),var(--gold))"></i></div>
+ <p class="qbox">${L(q.q)}</p>
+ <div class="opts">${ord.map((oi,n)=>`<button class="opt" data-o="${oi}"><span class="k">${'ABCD'[n]}</span>${L(q.o)[oi]}</button>`).join('')}</div><div id="qfb"></div>`;
+ $$('.opt',ar).forEach(b=>b.onclick=()=>{if(Q.ans[Q.i]!=null)return;const a=+b.dataset.o;Q.ans[Q.i]=a;const ok=a===q.a;if(ok){SFX.ok();b.classList.add('ok')}else{SFX.bad();b.classList.add('bad');$(`.opt[data-o="${q.a}"]`,ar).classList.add('ok')}$$('.opt',ar).forEach(x=>x.disabled=true);
+  $('#qfb').innerHTML=`<div class="fb ${ok?'ok':'bad'}">${ok?t('correct'):t('wrong')}<p>💡 ${L(q.e)}</p></div><div class="row" style="margin-top:.8rem"><button class="btn primary" id="qNext">${Q.i===Q.qs.length-1?t('finish'):t('next')} ${I.arrow}</button></div>`;
+  $('#qNext').onclick=()=>{Q.i++;renderQuiz();window.scrollTo({top:$('#qArena').getBoundingClientRect().top+window.scrollY-90,behavior:'smooth'})}});
+}
+
+/* =========================================================
+   PAGE: PORTFOLIO
+   ========================================================= */
+const RQ={zh:['讀完〈孔乙己〉，你對哪一個畫面印象最深？為什麼？','如果你是當年的小夥計，你會怎麼對待孔乙己？','這篇小說讓你對「尊重」與「旁觀」有什麼新的想法？'],en:['Which scene stayed with you most, and why?','If you were the boy back then, how would you treat Kong Yiji?','What new thoughts do you have about respect and being a bystander?']};
+function fmt(iso){try{const d=new Date(iso);return d.toLocaleString(S.lang==='zh'?'zh-TW':'en-US',{month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'})}catch(e){return iso}}
+function renderPortfolio(){
+ const zh=S.lang==='zh',el=$('#page-portfolio');
+ const qs=P.quizzes.slice(-10),best=P.quizzes.length?Math.max(...P.quizzes.map(x=>x.score)):0;
+ const avgP=P.practice.length?Math.round(P.practice.reduce((a,b)=>a+b.score,0)/P.practice.length):0;
+ el.innerHTML=`<div class="sec-head" style="margin-top:.5rem"><div><span class="kicker">🌱 ${t('pfK')}</span><h2>${t('pfT')}</h2><p class="lead">${t('pfP')}</p></div></div>
+ <div class="stats">
+  <div class="stat" style="background:var(--red)"><b>${P.steps.length}/${STEPS.length}</b><span>${zh?'學習步驟':'Steps done'}</span></div>
+  <div class="stat" style="background:var(--gold);color:#3b2600"><b>${Math.min(6,P.explored.length)}/6</b><span>${zh?'互動元件':'Visuals explored'}</span></div>
+  <div class="stat" style="background:var(--jade)"><b>${P.practice.length}</b><span>${zh?'練習次數・平均 ':'Practices · avg '}${avgP}</span></div>
+  <div class="stat" style="background:var(--indigo)"><b>${best}</b><span>${zh?'測驗最高分・共 ':'Best quiz · '}${P.quizzes.length}${zh?' 次':' tries'}</span></div>
+ </div>
+ <div class="grid g2" style="margin-top:1rem">
+  <div class="card"><h3>📊 ${zh?'最近 10 次測驗':'Last 10 quizzes'}</h3>${qs.length?`<div class="bars">${qs.map((x,i)=>`<div><span style="font-weight:800;color:var(--ink)">${x.score}</span><i style="height:${Math.max(4,x.score)}%"></i><span>#${P.quizzes.length-qs.length+i+1}</span></div>`).join('')}</div>`:`<p class="muted" style="padding:2rem 0;text-align:center">${zh?'還沒有測驗紀錄，去測驗區試試看！':'No quiz yet — give it a try!'}</p>`}</div>
+  <div class="card"><h3 style="margin-bottom:.6rem">🪪 ${zh?'學生資料（匯出時使用）':'Student info (for export)'}</h3>
+   <div class="grid" style="grid-template-columns:1fr 1fr 1fr;gap:.6rem">
+    <div class="field"><label for="pfName">${zh?'姓名':'Name'}</label><input id="pfName" value="${esc(P.profile.name)}"></div>
+    <div class="field"><label for="pfCls">${zh?'班級':'Class'}</label><input id="pfCls" value="${esc(P.profile.cls)}"></div>
+    <div class="field"><label for="pfSeat">${zh?'座號':'No.'}</label><input id="pfSeat" value="${esc(P.profile.seat)}"></div>
+   </div>
+   <h3 style="margin:1rem 0 .5rem">⬇️ ${zh?'下載學習歷程':'Download portfolio'}</h3>
+   <div class="row"><button class="btn primary" data-dl="html">${I.down} ${zh?'學習報告 (HTML)':'Report (HTML)'}</button><button class="btn gold" data-dl="txt">${I.down} TXT</button><button class="btn ghost" data-dl="csv">${I.down} CSV</button><button class="btn ghost" data-dl="json">${I.down} JSON</button></div>
+   <p class="muted" style="font-size:.85rem;margin-top:.5rem">${zh?'紀錄只存在這台裝置的瀏覽器中，換裝置前請先下載。':'Records live only in this browser — download before switching devices.'}</p></div>
+ </div>
+ <div class="card" style="margin-top:1rem"><h3 style="margin-bottom:.6rem">💭 ${zh?'學習反思':'Reflection'}</h3>
+  <div style="display:grid;gap:.8rem">${RQ[S.lang].map((q,i)=>`<div class="field"><label for="rq${i+1}">${i+1}. ${q}</label><textarea id="rq${i+1}" rows="3">${esc(P.notes['q'+(i+1)]||'')}</textarea></div>`).join('')}
+  <div class="field"><label for="rqf">📒 ${zh?'自由筆記':'Free notes'}</label><textarea id="rqf" rows="3">${esc(P.notes.free||'')}</textarea></div></div>
+  <div class="row" style="margin-top:.8rem"><button class="btn jade" id="saveNotes">💾 ${zh?'儲存反思':'Save reflection'}</button></div></div>
+ <div class="card" style="margin-top:1rem"><div class="row" style="justify-content:space-between;margin-bottom:.6rem"><h3>🧾 ${zh?'學習足跡':'Activity log'} <span class="chip">${P.log.length}</span></h3><button class="btn ghost" id="clearAll" style="min-height:40px">🗑 ${zh?'清除紀錄':'Clear'}</button></div>
+  <div class="log">${P.log.length?P.log.map(x=>{const ic=LOGI[x.type]||['•','var(--bg2)'];return `<div class="it"><span class="ic" style="background:${ic[1]}">${ic[0]}</span><span style="font-size:.95rem;word-break:break-word">${esc(zh?x.zh:x.en)}</span><time>${fmt(x.t)}</time></div>`}).join(''):`<p class="muted" style="text-align:center;padding:1.5rem">${zh?'還沒有紀錄，開始探索吧！':'Nothing yet — start exploring!'}</p>`}</div></div>`;
+ ['Name','Cls','Seat'].forEach(k=>{$('#pf'+k).oninput=e=>{P.profile[k.toLowerCase()==='name'?'name':k.toLowerCase()]=e.target.value;saveP()}});
+ $('#saveNotes').onclick=()=>{P.notes.q1=$('#rq1').value;P.notes.q2=$('#rq2').value;P.notes.q3=$('#rq3').value;P.notes.free=$('#rqf').value;log('note','更新學習反思','Updated reflection');SFX.ok();toast(t('saved')+' 🌱');renderPortfolio()};
+ $$('[data-dl]',el).forEach(b=>b.onclick=()=>{SFX.click();download(b.dataset.dl)});
+ $('#clearAll').onclick=()=>confirmBox(zh?'確定要清除所有學習歷程嗎？此動作無法復原。':'Clear all records? This cannot be undone.',()=>{P.log=[];P.explored=[];P.steps=[];P.quizzes=[];P.practice=[];P.notes={q1:'',q2:'',q3:'',free:''};saveP();updateProgress();renderAll();go('portfolio',true);toast(zh?'已清除':'Cleared')});
+}
+function download(kind){
+ const zh=S.lang==='zh',now=new Date(),stamp=`${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
+ const name=P.profile.name||(zh?'學生':'student');
+ const best=P.quizzes.length?Math.max(...P.quizzes.map(x=>x.score)):'-';
+ let data,mime,ext;
+ if(kind==='json'){data=JSON.stringify({unit:'魯迅〈孔乙己〉',exported:now.toISOString(),...P},null,2);mime='application/json';ext='json'}
+ else if(kind==='csv'){const rows=[['time','type','record','score']].concat(P.log.slice().reverse().map(x=>[x.t,x.type,zh?x.zh:x.en,x.score??'']));data='﻿'+rows.map(r=>r.map(c=>'"'+String(c).replace(/"/g,'""')+'"').join(',')).join('\r\n');mime='text/csv';ext='csv'}
+ else if(kind==='txt'){const L2=[];L2.push('魯迅〈孔乙己〉學習歷程','='.repeat(28),`姓名：${P.profile.name}　班級：${P.profile.cls}　座號：${P.profile.seat}`,`匯出時間：${now.toLocaleString('zh-TW')}`,'',`完成學習步驟：${P.steps.length}/${STEPS.length}`,`探索互動元件：${Math.min(6,P.explored.length)}/6`,`練習次數：${P.practice.length}`,`測驗次數：${P.quizzes.length}　最高分：${best}`,'','【學習反思】');RQ.zh.forEach((q,i)=>L2.push(`${i+1}. ${q}`,'   '+(P.notes['q'+(i+1)]||'（未填寫）')));L2.push('自由筆記：'+(P.notes.free||'（無）'),'','【學習足跡】');P.log.slice().reverse().forEach(x=>L2.push(`${new Date(x.t).toLocaleString('zh-TW')}  ${x.zh}`));data='﻿'+L2.join('\r\n');mime='text/plain';ext='txt'}
+ else{const rows=P.log.slice().reverse().map(x=>`<tr><td>${new Date(x.t).toLocaleString('zh-TW')}</td><td>${esc(x.zh)}</td><td>${x.score??''}</td></tr>`).join('');
+  const qbars=P.quizzes.map((x,i)=>`<div style="flex:1;text-align:center;font-size:12px"><div style="height:${x.score}px;background:#4f5bd5;border-radius:6px 6px 0 0;margin:0 3px"></div>#${i+1}<br>${x.score}</div>`).join('');
+  data=`<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="utf-8"><title>孔乙己學習報告-${esc(name)}</title><style>body{font-family:"Noto Sans TC","Microsoft JhengHei",sans-serif;max-width:860px;margin:2rem auto;padding:0 1rem;color:#2b2238;line-height:1.7;font-size:17px}h1{color:#e5484d;font-family:serif}h2{border-left:8px solid #f2a516;padding-left:.6rem;margin-top:2rem}.g{display:grid;grid-template-columns:repeat(4,1fr);gap:.6rem}.s{background:#fff4e0;border-radius:12px;padding:.8rem;text-align:center}.s b{display:block;font-size:1.8rem;color:#e5484d}table{width:100%;border-collapse:collapse;font-size:15px}td,th{border-bottom:1px solid #eadfcd;padding:.4rem;text-align:left}.q{background:#f6f2ff;border-radius:12px;padding:.8rem;margin:.5rem 0}@media print{body{margin:0}}</style></head><body>
+  <h1>魯迅〈孔乙己〉學習報告</h1><p>姓名：${esc(P.profile.name)}　班級：${esc(P.profile.cls)}　座號：${esc(P.profile.seat)}<br>匯出時間：${now.toLocaleString('zh-TW')}</p>
+  <div class="g"><div class="s"><b>${P.steps.length}/${STEPS.length}</b>學習步驟</div><div class="s"><b>${Math.min(6,P.explored.length)}/6</b>互動元件</div><div class="s"><b>${P.practice.length}</b>練習次數</div><div class="s"><b>${best}</b>測驗最高分</div></div>
+  <h2>測驗成績</h2>${P.quizzes.length?`<div style="display:flex;align-items:flex-end;height:130px;border-bottom:2px solid #2b2238">${qbars}</div>`:'<p>尚無測驗紀錄</p>'}
+  <h2>學習反思</h2>${RQ.zh.map((q,i)=>`<div class="q"><b>${i+1}. ${q}</b><p>${esc(P.notes['q'+(i+1)]||'（未填寫）').replace(/\n/g,'<br>')}</p></div>`).join('')}<div class="q"><b>自由筆記</b><p>${esc(P.notes.free||'（無）').replace(/\n/g,'<br>')}</p></div>
+  <h2>學習足跡</h2><table><tr><th>時間</th><th>紀錄</th><th>分數</th></tr>${rows}</table></body></html>`;mime='text/html';ext='html'}
+ const blob=new Blob([data],{type:mime+';charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);const tag=[P.profile.cls,P.profile.seat].map(x=>String(x||'').replace(/[^\w-]/g,'')).filter(Boolean).join('-');a.download=`KongYiji_Portfolio${tag?'_'+tag:''}_${stamp}.${ext}`;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1000);
+ toast(zh?'已下載 '+ext.toUpperCase():'Downloaded '+ext.toUpperCase());
+}
+function confirmBox(msg,ok){const bg=$('#confirmBg'),m=$('#confirmModal'),zh=S.lang==='zh';m.innerHTML=`<h3>⚠️ ${zh?'請確認':'Confirm'}</h3><p>${msg}</p><div class="row" style="margin-top:1rem;justify-content:flex-end"><button class="btn ghost" id="cfNo">${zh?'取消':'Cancel'}</button><button class="btn primary" id="cfYes">${zh?'確定清除':'Clear'}</button></div>`;bg.classList.add('open');SFX.bad();
+ $('#cfNo').onclick=()=>bg.classList.remove('open');$('#cfYes').onclick=()=>{bg.classList.remove('open');ok()};bg.onclick=e=>{if(e.target===bg)bg.classList.remove('open')}}
+
+/* =========================================================
+   SETTINGS
+   ========================================================= */
+function isFs(){return !!(document.fullscreenElement||document.webkitFullscreenElement)}
+function setFs(on){const d=document.documentElement;try{if(on){(d.requestFullscreen||d.webkitRequestFullscreen).call(d)}else if(isFs()){(document.exitFullscreen||document.webkitExitFullscreen).call(document)}}catch(e){toast(t('fsNo'))}}
+function applySettings(){const h=document.documentElement;h.dataset.theme=S.theme;h.dataset.font=S.font;h.dataset.device=S.device;h.dataset.layout=S.layout;h.lang=S.lang==='zh'?'zh-Hant':'en';
+ const dark=S.theme==='dark'||(S.theme==='system'&&matchMedia('(prefers-color-scheme: dark)').matches);$('meta[name=theme-color]').setAttribute('content',dark?'#16121e':'#e5484d');
+ $('#soundQuick').innerHTML=S.sound?I.soundOn:I.soundOff;$('#soundQuick').setAttribute('aria-label',t('sSound')+': '+(S.sound?t('on'):t('off')));
+ document.title=S.lang==='zh'?'孔乙己學習站':'Kong Yiji Study Hub';}
+function renderSettings(){
+ const fsOk=!!(document.documentElement.requestFullscreen||document.documentElement.webkitRequestFullscreen);
+ const rows=[
+  ['fs','⛶',t('sFs'),[[true,t('on')],[false,t('off')]],isFs()],
+  ['sound','🔊',t('sSound'),[[true,t('on')],[false,t('off')]],S.sound],
+  ['device','📱',t('sDevice'),[['auto',t('auto')],['phone',t('phone')],['tablet',t('tablet')],['desktop',t('desktop')]],S.device],
+  ['layout','🔄',t('sLayout'),[['auto',t('auto')],['portrait',t('portrait')],['landscape',t('landscape')]],S.layout],
+  ['lang','🌐',t('sLang'),[['zh','繁體中文'],['en','English']],S.lang],
+  ['font','🔠',t('sFont'),[['sm',t('fSm')],['md',t('fMd')],['lg',t('fLg')]],S.font],
+  ['theme','🎨',t('sTheme'),[['system',t('system')],['light',t('light')],['dark',t('dark')]],S.theme]];
+ $('#settingsModal').innerHTML=`<h3 id="setTitle"><span>⚙️ ${t('settings')}</span><button class="iconbtn" id="setX" aria-label="${t('close')}">✕</button></h3>
+ ${rows.map(([k,ic,lab,opts,val])=>`<div class="set-row"><span class="lab">${ic} ${lab}${k==='fs'&&!fsOk?` <small class="muted">（${t('fsNo')}）</small>`:''}</span><div class="seg" role="radiogroup" aria-label="${lab}">${opts.map(([v,txt])=>`<button role="radio" aria-checked="${v===val}" class="${v===val?'on':''}" data-k="${k}" data-v="${v}" ${k==='fs'&&!fsOk?'disabled':''}>${txt}</button>`).join('')}</div></div>`).join('')}
+ <div class="row" style="margin-top:1rem;justify-content:space-between"><button class="btn ghost" id="setReset">${I.redo} ${t('resetAll')}</button><button class="btn primary" id="setDone">${t('close')}</button></div>`;
+ $$('#settingsModal .seg button').forEach(b=>b.onclick=()=>{const k=b.dataset.k;let v=b.dataset.v;if(v==='true')v=true;else if(v==='false')v=false;
+  if(k==='fs'){setFs(v);setTimeout(renderSettings,250);SFX.click();return}
+  const old=S[k];S[k]=v;saveS();applySettings();if(k==='sound'&&v)ac();SFX.click();
+  if(k==='lang'&&old!==v){renderAll();go(current,true)}
+  renderSettings()});
+ $('#setX').onclick=$('#setDone').onclick=closeSettings;
+ $('#setReset').onclick=()=>{Object.assign(S,{sound:true,device:'auto',layout:'auto',lang:'zh',font:'md',theme:'system'});saveS();applySettings();renderAll();go(current,true);renderSettings();SFX.ok()};
+}
+function openSettings(){renderSettings();$('#settingsBg').classList.add('open');SFX.tab();setTimeout(()=>{const m=$('#settingsModal');m.scrollTop=0;const b=$('#setX');b&&b.focus({preventScroll:true})},50)}
+function closeSettings(){$('#settingsBg').classList.remove('open');SFX.click();$('#openSettings').focus()}
+
+/* =========================================================
+   INIT
+   ========================================================= */
+function renderAll(){
+ $$('[data-i]').forEach(e=>e.textContent=t(e.dataset.i));
+ $('#nav').setAttribute('aria-label',S.lang==='zh'?'主選單':'Main menu');
+ $('#footer').textContent=t('footer');
+ renderNav();renderGuide();renderExplore();renderExtend();renderPractice();renderQuiz();if(current==='portfolio')renderPortfolio();
+}
+applySettings();renderAll();
+go((location.hash||'#guide').slice(1),true);
+updateProgress();
+$('#openSettings').onclick=openSettings;
+$('#settingsBg').onclick=e=>{if(e.target.id==='settingsBg')closeSettings()};
+$('#soundQuick').onclick=()=>{S.sound=!S.sound;saveS();applySettings();if(S.sound){ac();SFX.ok()}toast(t('sSound')+'：'+(S.sound?t('on'):t('off')))};
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){if($('#settingsBg').classList.contains('open'))closeSettings();$('#confirmBg').classList.remove('open')}});
+document.addEventListener('fullscreenchange',()=>{if($('#settingsBg').classList.contains('open'))renderSettings()});
+window.addEventListener('hashchange',()=>go(location.hash.slice(1),true));
+matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change',applySettings);
+let resizeT;window.addEventListener('resize',()=>{clearTimeout(resizeT);resizeT=setTimeout(()=>{if(curViz==='speech'&&current==='explore'){}},200)});
+/* first visit of the day */
+const today=new Date().toISOString().slice(0,10);
+if(store.get('kyj-lastvisit','')!==today){store.set('kyj-lastvisit',today);log('visit','進入學習站','Visited the study hub')}
+
+/* PWA service worker */
+if('serviceWorker' in navigator&&(location.protocol==='https:'||location.hostname==='localhost'||location.hostname==='127.0.0.1')){
+ window.addEventListener('load',()=>{navigator.serviceWorker.register('sw.js').catch(()=>{})});
+}
+})();
+</script>
+</body>
+</html>
